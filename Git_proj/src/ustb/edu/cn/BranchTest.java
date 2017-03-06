@@ -25,7 +25,9 @@ public class BranchTest {
 		// TODO Auto-generated method stub
 		BranchTest bt = new BranchTest();
 		bt.setName("USTB");
+		bt.setPW("USTB");
 		System.out.println(bt.getName());
+		System.out.println(bt.getPW());
 		
 	}
 
