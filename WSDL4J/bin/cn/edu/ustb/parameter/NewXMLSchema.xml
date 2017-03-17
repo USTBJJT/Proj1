@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feeCalculation xmlns="http://add.example.ws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://add.example.ws NewXMLSchema.xsd ">
+  <chooseAirClass>0</chooseAirClass>
+  <chooseArea>0</chooseArea>
+  <isStudent>true</isStudent>
+  <luggage>0.0</luggage>
+  <economicfee>0.0</economicfee>
+</feeCalculation>

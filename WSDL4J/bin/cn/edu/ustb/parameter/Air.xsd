@@ -1,0 +1,32 @@
+<schema elementFormDefault="qualified" targetNamespace="http://add.example.ws" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="feeCalculation">
+    <complexType>
+     <sequence>
+      <element name="chooseAirClass" type="xsd:int"/>
+      <element name="chooseArea">
+      	<simpleType>
+      		<restriction base="int">
+
+      			<minInclusive value="0"></minInclusive>
+      			<maxInclusive value="1"></maxInclusive>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="isStudent" type="xsd:boolean"/>
+      <element name="luggage" type="xsd:double"/>
+      <element name="economicfee" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculationResponse">
+    <complexType>
+     <sequence>
+      <element name="feeCalculationReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="MACException">
+    <sequence/>
+   </complexType>
+   <element name="fault" type="impl:MACException"/>
+  </schema>

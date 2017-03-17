@@ -1,0 +1,17 @@
+<schema elementFormDefault="qualified" targetNamespace="http://add.example.ws" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="add">
+    <complexType>
+     <sequence>
+      <element name="a1" type="xsd:double"/>
+      <element name="a2" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addResponse">
+    <complexType>
+     <sequence>
+      <element name="addReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+</schema>

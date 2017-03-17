@@ -1,0 +1,6 @@
+2017-03-17 13:41:45,280 WARN  [SoapUI] Missing folder [D:\EclipseLuna\workspace\WSDL4J\.\ext] for external libraries
+2017-03-17 13:41:45,319 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\Administrator\soapui-settings.xml]
+2017-03-17 13:41:45,695 INFO  [SchemaUtils] Loading schema types from [file:/E:/ExFile/AirlinesBaggageBillingService.wsdl]
+2017-03-17 13:41:45,695 INFO  [SchemaUtils] Getting schema file:/E:/ExFile/AirlinesBaggageBillingService.wsdl
+2017-03-17 13:41:45,812 INFO  [SchemaUtils] Loading schema types from [file:/E:/ExFile/AirlinesBaggageBillingService.wsdl]
+2017-03-17 13:41:45,812 INFO  [SchemaUtils] Getting schema file:/E:/ExFile/AirlinesBaggageBillingService.wsdl
