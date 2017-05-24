@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exp="http://exp.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:totalAmount>
+         <!--type: string-->
+         <exp:tstafflevel>gero et</exp:tstafflevel>
+         <!--type: double-->
+         <exp:tactualmonthlymileage>1.051732E7</exp:tactualmonthlymileage>
+         <!--type: double-->
+         <exp:tmonthlysalesamount>1.051732E7</exp:tmonthlysalesamount>
+         <!--type: double-->
+         <exp:tairfareamount>1.051732E7</exp:tairfareamount>
+         <!--type: double-->
+         <exp:totherexpensesamount>1.051732E7</exp:totherexpensesamount>
+      </exp:totalAmount>
+   </soapenv:Body>
+</soapenv:Envelope>

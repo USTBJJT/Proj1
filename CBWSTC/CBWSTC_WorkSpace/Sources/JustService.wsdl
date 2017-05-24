@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://just.simple.ws" xmlns:impl="http://just.simple.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:intf="http://just.simple.ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:documentation>we just want to try it</wsdl:documentation>
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://just.simple.ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="just">
+    <complexType>
+     <sequence>
+      <element name="a1">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+
+      			<maxInclusive value="30"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="str" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="justResponse">
+    <complexType>
+     <sequence>
+      <element name="justReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="justResponse">
+    <wsdl:part name="parameters" element="impl:justResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="justRequest">
+    <wsdl:part name="parameters" element="impl:just">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="JustService">
+    <wsdl:operation name="just">
+      <wsdl:input name="justRequest" message="impl:justRequest">
+    </wsdl:input>
+      <wsdl:output name="justResponse" message="impl:justResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JustServiceSoapBinding" type="impl:JustService">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="just">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="justRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="justResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JustService">
+    <wsdl:port name="JustService" binding="impl:JustServiceSoapBinding">
+      <wsdlsoap:address location="http://localhost:8080/axis2/services/JustService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

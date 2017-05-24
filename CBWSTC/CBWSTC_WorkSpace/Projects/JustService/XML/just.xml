@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:just="http://just.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <just:just>
+         <!--anonymous type-->
+         <just:a1>1.051732E7</just:a1>
+         <!--type: string-->
+         <just:str>gero et</just:str>
+      </just:just>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,4 @@
+ExpenseReimbursementSystem#{"sTime":"2017-03-01", "eTime":"2017-06-01"}
+totalAmount#totalAmount#totalAmountResponse#{"userAttribute":"", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"calculateReimbursementAmount/airfareReimbursement","preOp":"","preCT":""}
+calculateReimbursementAmount#calculateReimbursementAmount#calculateReimbursementAmountResponse#{"userAttribute":"stafflevel=seniormanager|manager", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"","preOp":"","preCT":""}
+airfareReimbursement#airfareReimbursement#airfareReimbursementResponse#{"userAttribute":"", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"","preOp":"","preCT":""}

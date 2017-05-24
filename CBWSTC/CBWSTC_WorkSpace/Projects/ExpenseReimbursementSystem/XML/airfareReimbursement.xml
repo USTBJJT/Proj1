@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exp="http://exp.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:airfareReimbursement>
+         <!--anonymous type - enumeration: [seniormanager,manager,supervisor]-->
+         <exp:stafflevel>seniormanager</exp:stafflevel>
+         <!--anonymous type-->
+         <exp:monthlysalesamount>1.051732E7</exp:monthlysalesamount>
+         <!--anonymous type-->
+         <exp:airfareamount>1.051732E7</exp:airfareamount>
+         <!--anonymous type-->
+         <exp:otherexpensesamount>1.051732E7</exp:otherexpensesamount>
+      </exp:airfareReimbursement>
+   </soapenv:Body>
+</soapenv:Envelope>

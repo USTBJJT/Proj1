@@ -1,0 +1,26 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://just.simple.ws">
+   <element name="just">
+    <complexType>
+     <sequence>
+      <element name="a1">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+
+      			<maxInclusive value="30"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="str" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="justResponse">
+    <complexType>
+     <sequence>
+      <element name="justReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>

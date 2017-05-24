@@ -1,0 +1,96 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://exp.simple.ws">
+   <element name="totalAmount">
+    <complexType>
+     <sequence>
+      <element name="tstafflevel" type="xsd:string"/>
+      <element name="tactualmonthlymileage" type="xsd:double"/>
+      <element name="tmonthlysalesamount" type="xsd:double"/>
+      <element name="tairfareamount" type="xsd:double"/>
+      <element name="totherexpensesamount" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="totalAmountResponse">
+    <complexType>
+     <sequence>
+      <element name="totalAmountReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculateReimbursementAmount">
+    <complexType>
+     <sequence>
+      <element name="stafflevel">
+      	<simpleType>
+      		<restriction base="string">
+      			<enumeration value="seniormanager"/>
+      			<enumeration value="manager"/>
+      			<enumeration value="supervisor"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="actualmonthlymileage">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculateReimbursementAmountResponse">
+    <complexType>
+     <sequence>
+      <element name="calculateReimbursementAmountReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="airfareReimbursement">
+    <complexType>
+     <sequence>
+      <element name="stafflevel">
+      	<simpleType>
+      		<restriction base="string">
+      			<enumeration value="seniormanager"/>
+      			<enumeration value="manager"/>
+      			<enumeration value="supervisor"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="monthlysalesamount">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="airfareamount">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="otherexpensesamount">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="airfareReimbursementResponse">
+    <complexType>
+     <sequence>
+      <element name="airfareReimbursementReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>

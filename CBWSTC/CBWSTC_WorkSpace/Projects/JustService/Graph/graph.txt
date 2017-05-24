@@ -1,0 +1,9 @@
+nodes.size()4
+0 start initial
+1 end end
+2 just.just input
+3 just.justResponse output
+edges.size()3
+0 2
+2 3
+3 1
