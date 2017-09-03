@@ -15,6 +15,10 @@ import java.awt.SystemColor;
 
 import javax.swing.JButton;
 
+import cn.edu.ustb.cbwstc.decisionTables.ParseDT;
+import cn.edu.ustb.cbwstc.model.Graph;
+import cn.edu.ustb.cbwstc.model.Node;
+import cn.edu.ustb.cbwstc.modelCore.Converter;
 import cn.edu.ustb.cbwstc.tcg.XmlInputFormat;
 import cn.edu.ustb.cbwstc.wsdl.parser.GetXsd;
 import cn.edu.ustb.cbwstc.wsdl.parser.ParseSequence;
@@ -27,7 +31,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import javax.swing.JScrollPane;
@@ -49,30 +55,33 @@ public class ParsePanel extends JPanel {
 	private String url;
 	private Map<String,String> mapC = new HashMap<String,String>();
 	private Map<String,String> mapIO = new HashMap<String,String>();
-	private Map<String, XmlInputFormat> map = new HashMap<String, XmlInputFormat>();
-	
+	private Map<String,String> mapSq = new HashMap<String,String>();
+	private Map<String, XmlInputFormat> map = new HashMap<String, XmlInputFormat>();//服务操作的输入参数解析结果
+	private Graph g = new Graph();
 	private JPanel parsePanel;
 	private JPanel panelResult;
-	private JPanel panelConsole;
 	private JPanel ConSetPanel;
 	private JPanel panelSequence;
 	
 	private JTabbedPane tabbedPane;
 	private JScrollPane scrollPaneResult;
-	private JScrollPane scrollPaneConsole;
 	
 	private JTextArea textAreaURL;
 	private JTextArea textAreaResult;
-	private JTextArea textAreaConsole;
 	private JTextArea textAreapreOp;
+	private JTextArea textAreaSquence;
 	private JButton btnParseButton;
 	private JButton btnGModelButton;
 	private JButton btnAddButton;
 	private JComboBox<String> comboBoxOp;
+	private JComboBox comboBoxFrom;
+	private JComboBox comboBoxTo;
 	private JLabel lblOpLabel;
 	private JLabel lblpreOPLabel;
 	private JLabel lblSqLabel;
 	private JScrollPane scrollPaneOp;
+	private JLabel label_1;
+	private JLabel label_2;
 	
 	
 	
@@ -137,28 +146,11 @@ public class ParsePanel extends JPanel {
 		panelResult.add(scrollPaneResult);
 		
 		/**
-		 * panelConsole设置
-		 */
-		panelConsole = new JPanel();
-		panelConsole.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Console", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
-		panelConsole.setBounds(10, 440, 890, 150);
-		add(panelConsole);
-		panelConsole.setLayout(null);
-		
-		textAreaConsole = new JTextArea();
-		textAreaConsole.setBackground(SystemColor.control);
-		textAreaConsole.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		scrollPaneConsole = new JScrollPane(textAreaConsole);
-		scrollPaneConsole.setBounds(10, 23, 870, 117);
-		scrollPaneConsole.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
-		scrollPaneConsole.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		panelConsole.add(scrollPaneConsole);
-		
-		/**
 		 * ConSetPanel设置
 		 */
 		ConSetPanel = new JPanel();
-		ConSetPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Constraint Set", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
+//		8/20注释掉的      ConSetPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Constraint Set", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
+		ConSetPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Model Set", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
 		ConSetPanel.setBounds(10, 100, 515, 337);
 		add(ConSetPanel);
 		ConSetPanel.setLayout(null);
@@ -171,8 +163,23 @@ public class ParsePanel extends JPanel {
 		comboBoxOp = new JComboBox<String>();
 		comboBoxOp.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				String str = mapC.get(comboBoxOp.getSelectedItem().toString());
-				textAreapreOp.setText(str);
+				Node node = g.getNode(comboBoxOp.getSelectedItem().toString());
+				textAreapreOp.setText(node.getPreOpC());
+				textAreapreOp.paintImmediately(textAreapreOp.getBounds());
+//				String str = mapC.get(comboBoxOp.getSelectedItem().toString());
+//				textAreapreOp.setText(str);
+//				if(str != null && str.length() != 0) {
+//					if(str.trim().equals("null")){
+//						textAreaSquence = new JTextArea();
+//						textAreaSquence.setBackground(SystemColor.control);
+//						textAreaSquence.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+//						textAreaSquence.setBounds(70, 95, 395, 100);
+//						textAreaSquence.setLineWrap(true);
+//						textAreaSquence.setWrapStyleWord(true);
+//						panelSequence.add(textAreaSquence);
+//						textAreaSquence.append("This operation has no sequence constraint and adds the relevant sequence by clicking the \" Add Sequence \" button directly");
+//					}
+//				}
 			}
 		});
 		comboBoxOp.setFont(new Font("微软雅黑", Font.PLAIN, 12));
@@ -180,41 +187,97 @@ public class ParsePanel extends JPanel {
 		ConSetPanel.add(comboBoxOp);
 		
 		panelSequence = new JPanel();
-		panelSequence.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Call Sequence Constraint", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
+		panelSequence.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Sequence Constraint", TitledBorder.LEFT, TitledBorder.TOP, new Font("微软雅黑", Font.PLAIN, 12), new Color(0, 0, 0)));
 		panelSequence.setBounds(30, 55, 475, 243);
 		ConSetPanel.add(panelSequence);
 		panelSequence.setLayout(null);
 		
-		btnAddButton = new JButton("Add Call Sequence");
+		btnAddButton = new JButton("Add Sequence");
+		btnAddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Converter c = new Converter(map);
+				c.setupConnection(g, comboBoxFrom.getSelectedItem().toString(), comboBoxTo.getSelectedItem().toString());
+				System.out.println("Add Success !");
+//				String str = textAreapreOp.getText();
+//				if(str != null && str.length() != 0) {
+//					if(str.trim().equals("null")){
+//						String sequenceStr =  mapIO.get(comboBoxOp.getSelectedItem().toString());
+//						addSingelSequence(sequenceStr);
+//					}
+//				}
+			}
+		});
 		btnAddButton.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		btnAddButton.setBounds(315, 208, 150, 25);
+		btnAddButton.setBounds(345, 208, 120, 25);
 		panelSequence.add(btnAddButton);
 		
 		lblpreOPLabel = new JLabel("preOP:");
 		lblpreOPLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		lblpreOPLabel.setBounds(20, 30, 50, 25);
+		lblpreOPLabel.setBounds(21, 55, 50, 25);
 		panelSequence.add(lblpreOPLabel);
 		
-		lblSqLabel = new JLabel("Sequence:");
-		lblSqLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		lblSqLabel.setBounds(20, 60, 70, 25);
-		panelSequence.add(lblSqLabel);
+		
+		JLabel label = new JLabel("Set Connect Between Nodes:");
+		label.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		label.setBounds(21, 100, 180, 25);
+		panelSequence.add(label);
+		
+//		lblSqLabel = new JLabel("Sequence:");
+//		lblSqLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+//		lblSqLabel.setBounds(20, 60, 70, 25);
+//		panelSequence.add(lblSqLabel);
 		
 		textAreapreOp = new JTextArea();
+		textAreapreOp.setBounds(72, 46, 393, 23);
 		textAreapreOp.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		textAreapreOp.setEditable(false);
 		textAreapreOp.setBackground(SystemColor.control);
 		scrollPaneOp = new JScrollPane(textAreapreOp);
-		scrollPaneOp.setBounds(70, 30, 395, 25);
-		scrollPaneOp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); 
+		scrollPaneOp.setBounds(70, 44, 395, 51);
+		scrollPaneOp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
 		panelSequence.add(scrollPaneOp);
+		
+		label_1 = new JLabel("From");
+		label_1.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		label_1.setBounds(21, 135, 35, 25);
+		panelSequence.add(label_1);
+		
+		label_2 = new JLabel("To");
+		label_2.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		label_2.setBounds(252, 135, 20, 25);
+		panelSequence.add(label_2);
+		
+		comboBoxFrom = new JComboBox();
+		comboBoxFrom.setBounds(58, 137, 188, 25);
+		panelSequence.add(comboBoxFrom);
+		
+		comboBoxTo = new JComboBox();
+		comboBoxTo.setBounds(275, 137, 188, 25);
+		panelSequence.add(comboBoxTo);
 		
 		btnGModelButton = new JButton("Generate Model");
 		btnGModelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GenerateModel modelPanel = new GenerateModel(url, map, tabbedPane);
-				tabbedPane.addTab("Generate Models", null, modelPanel, null);
-				modelPanel.setPreferredSize(new Dimension(915, 600));
+				String name = url.substring(url.lastIndexOf("/")+1, url.length()-5);
+				Converter c = new Converter(map);
+				c.convert(g, name);
+				/**
+				 * 这里来几个map试试模型生成算法的正确性，之后注释掉
+				 */
+				//
+//				mapSq.put("A1#A2#B1#B2#C1#C2", "C");
+//				mapSq.put("A1#A2", "A");
+//				mapSq.put("D1#D2#C1#C2", "C");
+//				mapSq.put("D1#D2", "D");
+//				mapSq.put("B1#B2", "B");
+				//
+//				GenerateModel modelPanel = new GenerateModel(url, map, mapSq, tabbedPane);
+//				tabbedPane.addTab("Generate Models", null, modelPanel, null);
+//				modelPanel.setPreferredSize(new Dimension(915, 445));
+				GenerateTestSequence gtsPanel = new GenerateTestSequence(url,g,tabbedPane);
+				tabbedPane.addTab("Generate TestSequences", null, gtsPanel, null);
+				gtsPanel.setPreferredSize(new Dimension(915, 445));
+				
 			}
 		});
 		btnGModelButton.setBounds(375, 302, 130, 25);
@@ -227,43 +290,43 @@ public class ParsePanel extends JPanel {
 	 */
 	private void parseButtonAction() {
 		/**
-		 * Console重定向
-		 */
-		OutputStream textAreaStream = new OutputStream() {
-			public void write(int b) throws IOException {
-				textAreaConsole.append(String.valueOf((char)b));
-			}
-			public void write(byte b[]) throws IOException {
-				textAreaConsole.append(new String(b));
-			}
-			public void write(byte b[], int off, int len) throws IOException {
-				textAreaConsole.append(new String(b, off, len));
-			}
-		};
-		PrintStream myOut = new PrintStream(textAreaStream);
-		System.setOut(myOut);
-		System.setErr(myOut);
-		
-		
-		/**
 		 * 解析
 		 */
 		ReadWsdl readwsdl = new ReadWsdl(url);
 		String name = url.substring(url.lastIndexOf("/")+1, url.length()-5);
 		readwsdl.DefInterface(name);
 		map = readwsdl.getXmlInputFormatMap();
-		textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
 		textAreaResult.setText(readwsdl.getpanelResult());
-		for(int i = 0; i < readwsdl.getBindingOperation().size(); i++) {
-			comboBoxOp.addItem(readwsdl.getBindingOperation().get(i).getOperation().getName());
-		}
-		ParseSequence parsesequence = new ParseSequence();
-		parsesequence.sequenceParse(name);
-		mapC = parsesequence.getmapC();
-		mapIO =  parsesequence.getmapIO();
+//		for(int i = 0; i < readwsdl.getBindingOperation().size(); i++) {
+//			comboBoxOp.addItem(readwsdl.getBindingOperation().get(i).getOperation().getName());
+//		}
+		textAreapreOp.setText("preOp");
+//		ParseSequence parsesequence = new ParseSequence();
+//		parsesequence.sequenceParse(name);
+//		mapC = parsesequence.getmapC();
+//		mapIO =  parsesequence.getmapIO();
 		/**
 		 * 获取xsd，后期测试用例执行过程验证时使用
 		 */
 		GetXsd.getXsd(url,name);
+		
+		//生成初始模型
+		Converter c = new Converter(map);
+		g = new Graph();
+		g = c.initialNode(name);
+		LinkedHashSet<Node> nodes = g.getNodes();
+		ArrayList<String> OPI = readwsdl.getOpNameInputName();
+		for(int i = 0; i < OPI.size(); i++) {
+//			System.out.println(OPI.get(i).split("#")[0]);
+//			System.out.println(OPI.get(i).split("#")[1]);
+			comboBoxOp.addItem(OPI.get(i).split("#")[1]);
+		}
+		for(Node node: nodes) {
+			comboBoxFrom.addItem(node.getName());
+			comboBoxTo.addItem(node.getName());
+		}
+		//解析excel获取决策表约束
+		ParseDT pdt = new ParseDT(name);
+		pdt.findExcel("CBWSTC_WorkSpace/Projects/" + name + "/Excel/");
 	}
 }

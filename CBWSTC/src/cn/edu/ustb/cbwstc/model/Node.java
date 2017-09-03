@@ -2,7 +2,9 @@ package cn.edu.ustb.cbwstc.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class Node {
 	
@@ -10,19 +12,33 @@ public class Node {
 
 	private String name; //节点名称（是否是调用的操作 ，被调用操作的名字；或者只是一个结构节点）
 
-	private String type; //节点类型，标记该节点属于什么类型，比如初始节点、结束节点、基本活动、分支节点等等
+	private String type; //节点类型，标记该节点属于什么类型，比如初始节点、结束节点、调用节点、响应节点
 
-	private int responseId;
+//	private int responseId;
+//
+//	private int childNumber;
+//	
+//	private HashMap<String, String> vaHashMap=new HashMap<String, String>();
 
-	private int childNumber;
+//	private ArrayList<Node> beforeNodes = new ArrayList<Node>(); //该节点的前继节点
 	
-	private HashMap<String, String> vaHashMap=new HashMap<String, String>();
+	private LinkedHashSet<Node> beforeNodes = new LinkedHashSet<Node>(); //该节点的前继节点
 
-	private ArrayList<Node> beforeNodes = new ArrayList<Node>(); //该节点的前继节点
-
-	private ArrayList<Node> afterNodes = new ArrayList<Node>(); //给节点的后继节点
+//	private ArrayList<Node> afterNodes = new ArrayList<Node>(); //该节点的后继节点
 	
-	private ArrayList<Condition> condition = new ArrayList<Condition>(); //约束的集合
+	private LinkedHashSet<Node> afterNodes = new LinkedHashSet<Node>(); //该节点的后继节点
+	
+	private ArrayList<Condition> condition = new ArrayList<Condition>(); //参数约束的集合
+	
+	private String paraRelationC = ""; //参数关系约束
+	
+	private String ipRegionC = ""; //区域约束
+	
+	private String invokeOpC = ""; //调用约束
+	
+	private String preOpC = ""; //序列约束
+	
+	private boolean IterationC; //重复执行约束
 	
 	public int getId() {
 		return id;
@@ -48,36 +64,94 @@ public class Node {
 		this.type = type;
 	}
 	
-	public ArrayList getBeforeNodes() {
+	public LinkedHashSet<Node> getBeforeNodes() {
 		return beforeNodes;
 	}
 
-	public void setBeforeNodes(ArrayList beforeNodes) {
+	public void setBeforeNodes(LinkedHashSet<Node> beforeNodes) {
 		this.beforeNodes = beforeNodes;
 	}
 
-	public ArrayList getAfterNodes() {
+	public LinkedHashSet<Node> getAfterNodes() {
 		return afterNodes;
 	}
 
-	public void setAfterNodes(ArrayList afterNodes) {
+	public void setAfterNodes(LinkedHashSet<Node> afterNodes) {
 		this.afterNodes = afterNodes;
 	}
 	
-	public void setVaHashMap(HashMap<String, String> vaHashMap) {
-		this.vaHashMap = vaHashMap;
-	}
+//	public void setVaHashMap(HashMap<String, String> vaHashMap) {
+//		this.vaHashMap = vaHashMap;
+//	}
 	
-	public String getCondition() {
-		String ConditionList = "";
-		for(int i = 0;i < condition.size(); i ++){
-			ConditionList = ConditionList + getName() + ":" + condition.get(i).getContent() + "\n";
-        }
-		return ConditionList;
+	public ArrayList<Condition> getCondition() {
+//		String ConditionList = "";
+//		for(int i = 0;i < condition.size(); i ++){
+//			ConditionList = ConditionList + getName() + ":" + condition.get(i).getContent() + "\n";
+//        }
+		
+		return condition;
 	}
 
 	public void setCondition(ArrayList<Condition> condition) {
 		this.condition = condition;
+	}
+	
+	/**
+	 * 重写Node类的equals方法，为了能够不重复在图类、BeforeNodes、AfterNodes里面添加相同节点
+	 */
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Node))
+	           return false;
+		Node node = (Node) obj;
+		return node.name == name;
+	}
+	
+	/**
+	 * 重写Node类的hashCode方法
+	 */
+	public int hashCode() {
+		return name.hashCode();
+	}
+
+	public String getParaRelationC() {
+		return paraRelationC;
+	}
+
+	public void setParaRelationC(String paraRelationC) {
+		this.paraRelationC = paraRelationC;
+	}
+
+	public String getIpRegionC() {
+		return ipRegionC;
+	}
+
+	public void setIpRegionC(String ipRegionC) {
+		this.ipRegionC = ipRegionC;
+	}
+
+	public String getInvokeOpC() {
+		return invokeOpC;
+	}
+
+	public void setInvokeOpC(String invokeOpC) {
+		this.invokeOpC = invokeOpC;
+	}
+
+	public String getPreOpC() {
+		return preOpC;
+	}
+
+	public void setPreOpC(String preOpC) {
+		this.preOpC = preOpC;
+	}
+
+	public boolean getIterationC() {
+		return IterationC;
+	}
+
+	public void setIterationC(boolean iterationC) {
+		IterationC = iterationC;
 	}
 
 }

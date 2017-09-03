@@ -47,6 +47,7 @@ public class InvokeTest {
 			WsdlRequest requestSource0 = operation0.addNewRequest("requestSource");
 			String soapWithData0 = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:abbs=\"http://abbs.simple.ws\"><soapenv:Header/><soapenv:Body><abbs:loginin><abbs:name>userName</abbs:name></abbs:loginin></soapenv:Body></soapenv:Envelope>";
 			requestSource0.setRequestContent(soapWithData0);
+//			requestSource0.setEndpoint("");
 			SoapInvoker si0 = new SoapInvoker();
 			try {
 				//获取结果

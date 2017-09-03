@@ -1,8 +1,8 @@
 package cn.edu.ustb.cbwstc.model;
 
-import java.util.ArrayList;
-
 public class Edge {
+	
+	private String name;
 	
 	private int from; //出发节点
 
@@ -26,6 +26,14 @@ public class Edge {
 
 	public String toString() {
 		return this.getFrom() + " " + this.getTo();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

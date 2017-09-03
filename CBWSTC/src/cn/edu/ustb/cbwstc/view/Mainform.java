@@ -1,28 +1,44 @@
 package cn.edu.ustb.cbwstc.view;
 
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileFilter;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 import javax.swing.JLabel;
+
+
+
+
+
+
 
 import cn.edu.ustb.cbwstc.config.ConfigWorkSpace;
 
@@ -39,6 +55,7 @@ public class Mainform extends JFrame {
 	private GenerateTestCase gTCPanel;
 	private RunTest rtPanel;
 	private ResultReport resultPanel;
+	private JPanel panelConsole;
 	
 	
 	private JMenuBar menuBar;
@@ -50,6 +67,9 @@ public class Mainform extends JFrame {
 	private JMenuItem jMenuItemRun;
 	private JMenuItem jMenuItemStop;
 	
+	
+	private JTextArea textAreaConsole;
+	private JScrollPane scrollPaneConsole;
 	private JLabel lblSelectWSDLFile;
 	private JTextField Wsdlpath;
 	private JButton btnBrowse;
@@ -83,7 +103,6 @@ public class Mainform extends JFrame {
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -139,19 +158,21 @@ public class Mainform extends JFrame {
 		/**
 		 * —°‘ÒWSDL«¯”Ú
 		 */
+		contentPane.setLayout(null);
 		lblSelectWSDLFile = new JLabel();
 		lblSelectWSDLFile.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
 		lblSelectWSDLFile.setText("Select WSDL URL/File£∫");
 		lblSelectWSDLFile.setBounds(10, 10, 140, 25);
-		contentPane.add(lblSelectWSDLFile, BorderLayout.NORTH);
+		contentPane.add(lblSelectWSDLFile);
 		Wsdlpath = new JTextField();
 		Wsdlpath.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
 		Wsdlpath.setBounds(160, 10, 350, 25);
 		contentPane.add(Wsdlpath);
 		btnBrowse = new JButton();
+		btnBrowse.addActionListener(new OpenActionListener());
 		btnBrowse.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
-		btnBrowse.setText("Browse");
-		btnBrowse.setBounds(520, 10, 80, 25);
+		btnBrowse.setText("Browse Related Excel");
+		btnBrowse.setBounds(765, 10, 160, 25);
 		contentPane.add(btnBrowse);
 		btnChose = new JButton();
 		btnChose.addActionListener(new ActionListener() {
@@ -161,22 +182,38 @@ public class Mainform extends JFrame {
 		});
 		btnChose.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
 		btnChose.setText("Chose");
-		btnChose.setBounds(610, 10, 80, 25);
+		btnChose.setBounds(520, 10, 80, 25);
 		contentPane.add(btnChose);
 		btnCancel = new JButton();
 		btnCancel.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
 		btnCancel.setText("Cancel");
-		btnCancel.setBounds(700, 10, 80, 25);
+		btnCancel.setBounds(610, 10, 80, 25);
 		contentPane.add(btnCancel);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
 		tabbedPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		tabbedPane.setBackground(SystemColor.scrollbar);
-		tabbedPane.setBounds(10, 50, 915, 630);
+		tabbedPane.setBounds(10, 50, 915, 488);
 		contentPane.add(tabbedPane);
 		
+		/**
+		 * panelConsole…Ë÷√
+		 */
+		panelConsole = new JPanel();
+		panelConsole.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Console", TitledBorder.LEFT, TitledBorder.TOP, new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12), new Color(0, 0, 0)));
+		panelConsole.setBounds(10, 541, 915, 150);
+		getContentPane().add(panelConsole);
+		panelConsole.setLayout(null);
 		
+		textAreaConsole = new JTextArea();
+		textAreaConsole.setBackground(SystemColor.control);
+		textAreaConsole.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
+		scrollPaneConsole = new JScrollPane(textAreaConsole);
+		scrollPaneConsole.setBounds(10, 23, 895, 117);
+		scrollPaneConsole.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
+		scrollPaneConsole.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		panelConsole.add(scrollPaneConsole);
 		
 		
 	}
@@ -198,7 +235,7 @@ public class Mainform extends JFrame {
 			 */
 			parsePanel = new ParsePanel(Wsdlpath.getText().trim(),tabbedPane);
 			tabbedPane.addTab("Parse WSDL", null, parsePanel, null);
-			parsePanel.setPreferredSize(new Dimension(915, 600));
+			parsePanel.setPreferredSize(new Dimension(915, 445));
 //			modelPanel = new GenerateModel();
 //			tabbedPane.addTab("Generate Models", null, modelPanel, null);
 //			gTCPanel = new  GenerateTestCase();
@@ -207,10 +244,75 @@ public class Mainform extends JFrame {
 //			tabbedPane.addTab("Run Tests", null, rtPanel, null);
 //			resultPanel = new ResultReport();
 //			tabbedPane.addTab("Result Report", null, resultPanel, null);
+			
+//			/**
+//			 * Console÷ÿ∂®œÚ
+//			 */
+//			OutputStream textAreaStream = new OutputStream() {
+//				public void write(int b) throws IOException {
+//					textAreaConsole.append(String.valueOf((char)b));
+//				}
+//				public void write(byte b[]) throws IOException {
+//					textAreaConsole.append(new String(b));
+//				}
+//				public void write(byte b[], int off, int len) throws IOException {
+//					textAreaConsole.append(new String(b, off, len));
+//				}
+//			};
+//			PrintStream myOut = new PrintStream(textAreaStream);
+//			System.setOut(myOut);
+//			System.setErr(myOut);
+//			textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
 		}
 	}
 	
 	private void runTomcat() {
+		
+	}
+	
+	private class OpenActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser fileChooser = new JFileChooser();
+			
+			String startPath = System.getProperty("user.dir");
+			fileChooser.setCurrentDirectory(new File(startPath));
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			fileChooser.setFileFilter(new FileFilter(){
+				@Override
+				public boolean accept(File f) {
+					// TODO Auto-generated method stub
+					if(f.isDirectory()) {
+						return true;
+					}
+					return false;
+				}
+
+				public String getDescription() {
+					// TODO Auto-generated method stub
+					return null;
+				}});
+			fileChooser.showDialog(null, "OK");
+			if(fileChooser.getSelectedFile() != null) {
+				String path = fileChooser.getSelectedFile().getAbsolutePath();
+				String separator = File.separator;
+				String namet = Wsdlpath.getText().trim();
+				String name = namet.substring(namet.lastIndexOf("/")+1, namet.length()-5);
+				String file = System.getProperty("user.dir") + separator 
+						+ "CBWSTC_WorkSpace" + separator 
+						+ "Projects" + separator 
+						+ name + separator 
+						+"Excel" + separator;
+				String cmd = "xcopy " + path + " " + file + " /y";
+				try {
+					Runtime.getRuntime().exec(cmd);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}	
 		
 	}
 	

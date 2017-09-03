@@ -2,8 +2,8 @@
    <soapenv:Header/>
    <soapenv:Body>
       <exp:calculateReimbursementAmount>
-         <!--anonymous type - enumeration: [seniormanager,manager,supervisor]-->
-         <exp:stafflevel>seniormanager</exp:stafflevel>
+         <!--anonymous type - enumeration: [seniormanager,manager]-->
+         <exp:stafflevel>manager</exp:stafflevel>
          <!--anonymous type-->
          <exp:actualmonthlymileage>1.051732E7</exp:actualmonthlymileage>
       </exp:calculateReimbursementAmount>

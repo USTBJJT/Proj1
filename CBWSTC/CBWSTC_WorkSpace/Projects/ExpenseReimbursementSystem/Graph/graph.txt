@@ -1,10 +1,10 @@
 nodes.size()8
 0 start initial
 1 end end
-2 totalAmount.totalAmount input
-3 totalAmount.totalAmountResponse output
-4 calculateReimbursementAmount.calculateReimbursementAmount input
-5 calculateReimbursementAmount.calculateReimbursementAmountResponse output
+2 calculateReimbursementAmount.calculateReimbursementAmount input
+3 calculateReimbursementAmount.calculateReimbursementAmountResponse output
+4 totalAmount.totalAmount input
+5 totalAmount.totalAmountResponse output
 6 airfareReimbursement.airfareReimbursement input
 7 airfareReimbursement.airfareReimbursementResponse output
 edges.size()9

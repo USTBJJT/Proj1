@@ -17,8 +17,8 @@ public class SoapInvoker {
 		WsdlSubmit submit = (WsdlSubmit) request.submit(new WsdlSubmitContext(
 				request), false);
 		// wait for the response
-		System.out.println(submit.getStatus());
-		System.out.println(submit.getError());
+//		System.out.println(submit.getStatus());
+//		System.out.println(submit.getError());
 		Response response = submit.getResponse();
 		return response;
 	}

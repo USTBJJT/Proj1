@@ -1,4 +1,28 @@
-ExpenseReimbursementSystem#{"sTime":"2017-03-01", "eTime":"2017-06-01"}
-totalAmount#totalAmount#totalAmountResponse#{"userAttribute":"", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"calculateReimbursementAmount/airfareReimbursement","preOp":"","preCT":""}
-calculateReimbursementAmount#calculateReimbursementAmount#calculateReimbursementAmountResponse#{"userAttribute":"stafflevel=seniormanager|manager", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"","preOp":"","preCT":""}
-airfareReimbursement#airfareReimbursement#airfareReimbursementResponse#{"userAttribute":"", "ipRegion":"202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])","invokeOp":"","preOp":"","preCT":""}
+digraph G{
+graph[fontname="Microsoft YaHei"]
+	subgraph cluster_g{
+		label=<Web Service Behavior Model>;
+		node[shape=record,fontname="Microsoft YaHei"];
+		edge[fontname="Microsoft YaHei"];
+		node0[label="node0",shape=circle];
+		node1[label="node1",shape=circle];
+		node2[label="node2",shape=circle];
+		node3[label="node3",shape=circle];
+		node4[label="node4",shape=circle];
+		node5[label="node5",shape=circle];
+		node6[label="node6",shape=circle];
+		node7[label="node7",shape=circle];
+		node0->node2
+		node0->node4
+		node0->node6
+		node2->node3
+		node3->node1
+		node4->node5
+		node5->node1
+		node6->node7
+		node7->node1
+	}
+	subgraph cluster_c{
+		Cons[shape=record,label="{Node Condition|node0\nname: start\nCondition:\n|node1\nname: end\nCondition:\n|node2\nname: airfareReimbursement\nCondition:\n|node3\nname: airfareReimbursementResponse\nCondition:\n|node4\nname: calculateReimbursementAmount\nCondition:\n|node5\nname: calculateReimbursementAmountResponse\nCondition:\n|node6\nname: totalAmount\nCondition:\n|node7\nname: totalAmountResponse\nCondition:\n}"];
+	}
+}

@@ -1,0 +1,15 @@
+<Sequence>
+<Operation name="login" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:login xmlns:pfc="http://pfc.simple.ws">
+         <!--anonymous type-->
+         <pfc:License> </pfc:License>
+         <!--anonymous type-->
+         <pfc:loginTime>-1</pfc:loginTime>
+      </pfc:login>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+</Sequence>

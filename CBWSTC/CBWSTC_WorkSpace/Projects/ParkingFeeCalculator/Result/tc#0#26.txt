@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:loginResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>true</ns:return>
+      </ns:loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:feeCalculateResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>3.0</ns:return>
+      </ns:feeCalculateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:loginResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>true</ns:return>
+      </ns:loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

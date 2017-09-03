@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://exp.simple.ws">
    <element name="totalAmount">
     <complexType>
@@ -25,7 +26,6 @@
       		<restriction base="string">
       			<enumeration value="seniormanager"/>
       			<enumeration value="manager"/>
-      			<enumeration value="supervisor"/>
       		</restriction>
       	</simpleType>
       </element>

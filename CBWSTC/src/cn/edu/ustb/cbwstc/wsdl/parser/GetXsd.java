@@ -2,8 +2,10 @@ package cn.edu.ustb.cbwstc.wsdl.parser;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 import org.dom4j.Attribute;
@@ -28,7 +30,7 @@ public class GetXsd {
 		Element schema = types.element("schema");
 		File fw = new File("CBWSTC_WorkSpace/Projects/" + name + "/XSD/" + name + ".xsd");
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(fw));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fw), "UTF-8"));
 			bw.write(schema.asXML());
 			bw.flush();
 			bw.close();

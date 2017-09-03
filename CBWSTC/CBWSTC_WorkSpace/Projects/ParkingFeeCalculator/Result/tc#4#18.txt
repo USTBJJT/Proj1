@@ -1,0 +1,24 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:loginResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>true</ns:return>
+      </ns:loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:feeCalculateResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>13.5</ns:return>
+      </ns:feeCalculateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>soapenv:Server</faultcode>
+         <faultstring>java.lang.NullPointerException</faultstring>
+         <detail/>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+Error: Violating the Repeating Calls Constraint when calling feeCalculate operation

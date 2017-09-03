@@ -18,8 +18,11 @@ public class ConfigWorkSpace {
 		String name = WsdlURI.substring(WsdlURI.lastIndexOf("/")+1, WsdlURI.length()-5);
 		String directoryXSD = "CBWSTC_WorkSpace/Projects/" + name + "/XSD";
 		String directoryXML = "CBWSTC_WorkSpace/Projects/" + name + "/XML";
-		String directoryModel = "CBWSTC_WorkSpace/Projects/" + name + "/Model";
-		String directoryGraph = "CBWSTC_WorkSpace/Projects/" + name + "/Graph";
+		String directoryModel = "CBWSTC_WorkSpace/Projects/" + name + "/Parser";
+		String directoryGraph = "CBWSTC_WorkSpace/Projects/" + name + "/Model";
+		String directoryExcel = "CBWSTC_WorkSpace/Projects/" + name + "/Excel";
+		String directoryDT = "CBWSTC_WorkSpace/Projects/" + name + "/DT";
+		String directoryTD = "CBWSTC_WorkSpace/Projects/" + name + "/TestData";
 		String directoryTC = "CBWSTC_WorkSpace/Projects/" + name + "/TC";
 		String directoryResult = "CBWSTC_WorkSpace/Projects/" + name + "/Result";
 		String directoryLog = "CBWSTC_WorkSpace/Projects/" + name + "/Log";
@@ -27,6 +30,9 @@ public class ConfigWorkSpace {
 		CreatMkdir.creatMkdir(directoryXML);
 		CreatMkdir.creatMkdir(directoryModel);
 		CreatMkdir.creatMkdir(directoryGraph);
+		CreatMkdir.creatMkdir(directoryExcel);
+		CreatMkdir.creatMkdir(directoryDT);
+		CreatMkdir.creatMkdir(directoryTD);
 		CreatMkdir.creatMkdir(directoryTC);
 		CreatMkdir.creatMkdir(directoryResult);
 		CreatMkdir.creatMkdir(directoryLog);

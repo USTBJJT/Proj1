@@ -1,0 +1,53 @@
+<Sequence>
+<Operation name="login" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:login xmlns:pfc="http://pfc.simple.ws">
+         <!--anonymous type-->
+         <pfc:License>BJL42422</pfc:License>
+         <!--anonymous type-->
+         <pfc:loginTime>0</pfc:loginTime>
+      </pfc:login>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+<Operation name="feeCalculate" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:feeCalculate xmlns:pfc="http://pfc.simple.ws">
+         <!--anonymous type-->
+         <pfc:License>BJL42422</pfc:License>
+         <!--anonymous type - enumeration: [0,1,2]-->
+         <pfc:type>1</pfc:type>
+         <!--anonymous type-->
+         <pfc:timeout>0</pfc:timeout>
+         <!--type: boolean-->
+         <pfc:dayOfWeek>false</pfc:dayOfWeek>
+         <!--type: boolean-->
+         <pfc:discountCoupon>false</pfc:discountCoupon>
+      </pfc:feeCalculate>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+<Operation name="feeCalculate">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:feeCalculate xmlns:pfc="http://pfc.simple.ws">
+         <!--anonymous type-->
+         <pfc:License>BJL42422</pfc:License>
+         <!--anonymous type - enumeration: [0,1,2]-->
+         <pfc:type>1</pfc:type>
+         <!--anonymous type-->
+         <pfc:timeout>0</pfc:timeout>
+         <!--type: boolean-->
+         <pfc:dayOfWeek>false</pfc:dayOfWeek>
+         <!--type: boolean-->
+         <pfc:discountCoupon>false</pfc:discountCoupon>
+      </pfc:feeCalculate>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+</Sequence>

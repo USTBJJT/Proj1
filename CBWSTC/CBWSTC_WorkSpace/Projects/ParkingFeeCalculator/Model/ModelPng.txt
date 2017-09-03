@@ -1,0 +1,32 @@
+digraph G{
+graph[fontname="Microsoft YaHei"]
+	subgraph cluster_g{
+		label=<Web Service Behavior Model>;
+		node[shape=record,fontname="Microsoft YaHei"];
+		edge[fontname="Microsoft YaHei"];
+		n0[label="n0",shape=circle];
+		n1[label="n1",shape=circle];
+		n2[label="n2",shape=circle];
+		n3[label="n3",shape=circle];
+		n4[label="n4",shape=circle];
+		n5[label="n5",shape=circle];
+		n6[label="n6",shape=circle];
+		n7[label="n7",shape=circle];
+		n8[label="n8",shape=circle];
+		n0->n1[label="e0"];
+		n1->n2[label="e1"];
+		n2->n3[label="e2"];
+		n2->n4[label="e3"];
+		n3->n8[label="e4"];
+		n3->n5[label="e5"];
+		n4->n8[label="e6"];
+		n5->n6[label="e7"];
+		n5->n7[label="e8"];
+		n6->n8[label="e9"];
+		n6->n2[label="e10"];
+		n7->n8[label="e11"];
+	}
+	subgraph cluster_c{
+		Cons[shape=record,label="{Node Condition|n0\nname: Start\n|n1\nname: Init\n|n2\nname: login\n|n3\nname: loginResponse_succ\n|n4\nname: loginResponse_fail\n|n5\nname: feeCalculate\n|n6\nname: feeCalculateResponse_succ\n|n7\nname: feeCalculateResponse_fail\n|n8\nname: End\n}"];
+	}
+}

@@ -1,0 +1,6 @@
+(= feeCalculate_?_License login_?_License)
+(= feeCalculate_?_type 0)
+(>= feeCalculate_?_timeout 0) && (<= feeCalculate_?_timeout 24)
+(>= (- feeCalculate_?_timeout login_?_loginTime) 0) && (< (- feeCalculate_?_timeout login_?_loginTime) 2)
+(= feeCalculate_?_dayOfWeek false)
+(= feeCalculate_?_discountCoupon false)

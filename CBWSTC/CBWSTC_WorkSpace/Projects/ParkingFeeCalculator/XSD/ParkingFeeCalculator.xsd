@@ -1,0 +1,71 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://pfc.simple.ws" xmlns:impl="http://pfc.simple.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:intf="http://pfc.simple.ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="License">
+      	<simpleType>
+      		<restriction base="string">
+      			<pattern value="[B][J][A-Y][0-9]{5}"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="loginTime">
+      	<simpleType>
+      		<restriction base="int">
+      			<minInclusive value="0"/>
+      			<maxInclusive value="24"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculate">
+    <complexType>
+     <sequence>
+      <element name="License">
+      	<simpleType>
+      		<restriction base="string">
+      			<pattern value="[B][J][A-Y][0-9]{5}"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="type">
+      	<simpleType>
+      		<restriction base="int">
+      			<enumeration value="0"/>
+      			<enumeration value="1"/>
+      			<enumeration value="2"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="timeout">
+      	<simpleType>
+      		<restriction base="int">
+
+      			<minInclusive value="0"/>
+
+      			<maxInclusive value="24"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="dayOfWeek" type="xsd:boolean"/>
+      <element name="discountCoupon" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculateResponse">
+    <complexType>
+     <sequence>
+      <element name="feeCalculateReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>

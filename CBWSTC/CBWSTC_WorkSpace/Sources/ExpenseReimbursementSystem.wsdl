@@ -28,7 +28,6 @@
       		<restriction base="string">
       			<enumeration value="seniormanager"/>
       			<enumeration value="manager"/>
-      			<enumeration value="supervisor"/>
       		</restriction>
       	</simpleType>
       </element>

@@ -34,7 +34,7 @@ import cn.edu.ustb.cbwstc.tcg.XmlInputFormat;
 
 public class ReadWsdl {
 	
-	private  String strb = "";
+	private String strb = "";
 	private ArrayList<String> arr = new ArrayList<String>();
 	private List<BindingOperation> bindingOps = new ArrayList<BindingOperation>();
 	private Map<String,XmlInputFormat> mapXI = new HashMap<String, XmlInputFormat>();
@@ -46,7 +46,7 @@ public class ReadWsdl {
 	}
 	
 	public void DefInterface(String name) {
-		File f = new File("CBWSTC_WorkSpace/Projects/" + name + "/Model/model.txt");
+		File f = new File("CBWSTC_WorkSpace/Projects/" + name + "/Parser/result.txt");
 		Definition mydef = readWsdl10();
 //		Map<?,?> ns = mydef.getNamespaces();
 //		for(Map.Entry<?, ?> entry : ns.entrySet()) {
@@ -185,7 +185,7 @@ public class ReadWsdl {
 		getOperationOutput(bindingOper);
 		String Documentation = "NullDocumentation";
 		if(bindingOper.getOperation().getDocumentationElement() != null) {
-			Documentation = bindingOper.getOperation().getDocumentationElement().getTextContent();
+			Documentation = bindingOper.getOperation().getDocumentationElement().getTextContent().trim();
 		}
 		strb = strb + Documentation + System.getProperty("line.separator");
 		//getOperationFault(bindingOper);
@@ -287,6 +287,12 @@ public class ReadWsdl {
 		
 	}
 	
+	/**
+	 * 可以使用不同的WsdlURI了，这样对应不同的XSD！！可以生成不同测试用例
+	 * @param WsdlURI
+	 * @param bop
+	 * @return
+	 */
 	public XmlInputFormat getInputFormat(String WsdlURI, BindingOperation bop) {
 		SampleSoapBuilder builder = new SampleSoapBuilder(new WsdlContext(
 				WsdlURI));
@@ -323,6 +329,10 @@ public class ReadWsdl {
 	
 	public List<BindingOperation> getBindingOperation() {
 		return bindingOps;
+	}
+	
+	public ArrayList<String> getOpNameInputName(){
+		return arr;
 	}
 
 }

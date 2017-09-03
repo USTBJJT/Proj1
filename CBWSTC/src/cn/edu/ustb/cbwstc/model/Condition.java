@@ -9,6 +9,9 @@ public class Condition {
 	private int id;//约束序号，同一个边可以有很多约束
 	private String name;
 	private String type;
+	private String lowLimite;
+	private String highLimite;
+	private boolean numLimite;
 	private String minI;
 	private String minE;
 	private String maxI;
@@ -27,31 +30,32 @@ public class Condition {
 		return id;
 	}
 	
-	public void setContent(String content){
+	public void setContent(String content){ //字符串  由变量名#类型组成
 		this.content = content;
 	}
 	
 	public String getContent(){
-		String temp_contnet = getName() + " id=" + getId() + " type=" + getType();
-		if(!(getMinI()==null)) {
-			temp_contnet += " minI=" + getMinI();
-		}
-		if(!(getMinE()==null)) {
-			temp_contnet += " minE=" + getMinE();
-		}
-		if(!(getMaxI()==null)) {
-			temp_contnet += " maxI=" + getMaxI();
-		}
-		if(!(getMaxE()==null)) {
-			temp_contnet += " maxE=" + getMaxE();
-		}
-		if(!(getPattern()==null)) {
-			temp_contnet += " pattern=" + getPattern();
-		}
-		if(!(getEnumeration()==null)) {
-			temp_contnet += " enumeration=" + getEnumeration();
-		}
-		return temp_contnet;
+//		String temp_contnet = getName() + " id=" + getId() + " type=" + getType();
+//		if(!(getMinI()==null)) {
+//			temp_contnet += " minI=" + getMinI();
+//		}
+//		if(!(getMinE()==null)) {
+//			temp_contnet += " minE=" + getMinE();
+//		}
+//		if(!(getMaxI()==null)) {
+//			temp_contnet += " maxI=" + getMaxI();
+//		}
+//		if(!(getMaxE()==null)) {
+//			temp_contnet += " maxE=" + getMaxE();
+//		}
+//		if(!(getPattern()==null)) {
+//			temp_contnet += " pattern=" + getPattern();
+//		}
+//		if(!(getEnumeration()==null)) {
+//			temp_contnet += " enumeration=" + getEnumeration();
+//		}
+//		return temp_contnet;
+		return content;
 	}
 
 	public String getName() {
@@ -124,6 +128,30 @@ public class Condition {
 
 	public void setInvalidpattern(String invalidpattern) {
 		this.invalidpattern = invalidpattern;
+	}
+
+	public String getLowLimite() {
+		return lowLimite;
+	}
+
+	public void setLowLimite(String lowLimite) {
+		this.lowLimite = lowLimite;
+	}
+
+	public String getHighLimite() {
+		return highLimite;
+	}
+
+	public void setHighLimite(String highLimite) {
+		this.highLimite = highLimite;
+	}
+
+	public boolean isNumLimite() {
+		return numLimite;
+	}
+
+	public void setNumLimite(boolean numLimite) {
+		this.numLimite = numLimite;
 	}
 
 }

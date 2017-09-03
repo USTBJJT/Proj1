@@ -75,8 +75,8 @@ public class Main {
 //		}
 		GetXsd.getXsd(WsdlURI,name);//获取wsdl里面的xsd文件(进行模型约束生成时使用、进行测试用例格式正确校验时使用)
 		
-		Converter c = new Converter(map);//生成模型
-		c.convert(name, true);
+//		Converter c = new Converter(map);//生成模型
+//		c.convert(name, true);
 		
 		//退出
 		System.exit(0);

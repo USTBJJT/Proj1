@@ -14,7 +14,7 @@ public class ParseSequence {
 	private Map<String,String> mapC = new HashMap<String,String>();
 	private Map<String,String> mapIO = new HashMap<String,String>();
 	public void sequenceParse(String name) {
-		File f = new File("CBWSTC_WorkSpace/Projects/" + name + "/Model/model.txt");
+		File f = new File("CBWSTC_WorkSpace/Projects/" + name + "/Parser/result.txt");
 		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader(f));
