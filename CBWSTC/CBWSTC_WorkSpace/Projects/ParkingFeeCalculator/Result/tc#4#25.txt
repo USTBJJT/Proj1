@@ -8,7 +8,7 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
    <soapenv:Body>
       <ns:feeCalculateResponse xmlns:ns="http://pfc.simple.ws">
-         <ns:return>6.0</ns:return>
+         <ns:return>4.5</ns:return>
       </ns:feeCalculateResponse>
    </soapenv:Body>
 </soapenv:Envelope>

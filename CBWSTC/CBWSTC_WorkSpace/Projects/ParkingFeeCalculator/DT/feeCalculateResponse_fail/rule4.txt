@@ -1,1 +1,4 @@
-(< feeCalculate_?_timeout login_?_loginTime)
+(= true (str.in.re feeCalculate_?_License (re.++ (re.++ (re.++ (re.++ (re.++ (re.++ (str.to.re "BJ") (re.range "A" "Y")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9"))))
+(= feeCalculate_?_License login_?_License)
+(= feeCalculate_?_type 0)
+(< feeCalculate_?_timeout 0)

@@ -233,7 +233,7 @@ public class GetInitialTestSequence {
 ////		System.out.println(g.getInitGraphWalkerResult(cmd));
 //	}
 	
-	public ArrayList<TeatSequence> chooseCovCri(int Cover,boolean ifAddState) { //根据选择的覆盖准则，生成测试用例
+	public ArrayList<TeatSequence> chooseCovCri(int Cover) { //根据选择的覆盖准则，生成测试用例
 		LinkedHashSet<Node> nodes = g.getNodes();
 		ArrayList<Edge> edges = g.getEdges();
 		ArrayList<String> ele = new ArrayList<String>();
@@ -430,8 +430,8 @@ public class GetInitialTestSequence {
 	 * 针对测试序列生成可执行的测试用例
 	 * @param tss
 	 */
-	public void getTestCase(ArrayList<TeatSequence> tss) {
-		TestDateG tdg = new TestDateG(g,name);
+	public void getTestCase(ArrayList<TeatSequence> tss,boolean flag) {
+		TestDateG tdg = new TestDateG(g,name,flag);
 		for(int i=0;i<tss.size();i++) {
 //		System.out.println(tss.get(i).getTs());
 			//针对每个非违反序列约束的测试序列，约束求解生成测试数据

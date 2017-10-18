@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -40,7 +41,17 @@ import javax.swing.JLabel;
 
 
 
+
+
+
+
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import cn.edu.ustb.cbwstc.config.ConfigWorkSpace;
+
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class Mainform extends JFrame {
 
@@ -81,6 +92,9 @@ public class Mainform extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		NativeInterface.open();
+//		SetAppearence s = new SetAppearence();
+//		s.setSubstance();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -91,6 +105,7 @@ public class Mainform extends JFrame {
 				}
 			}
 		});
+		NativeInterface.runEventPump();
 	}
 
 	/**
@@ -98,8 +113,10 @@ public class Mainform extends JFrame {
 	 */
 	public Mainform() {
 		setTitle("CBWSTC");
+		ImageIcon icon = new ImageIcon("CBWSTC_WorkSpace/Pic/xmlr.png");
+		this.setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 950, 750);
+		setBounds(100, 100, 950, 900);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -134,6 +151,11 @@ public class Mainform extends JFrame {
 		jMenuItemImport = new JMenuItem();
 		jMenuItemImport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ResultReport rr= new ResultReport(tabbedPane);
+				tabbedPane.addTab("Result Report", null, rr, null);
+				rr.setPreferredSize(new Dimension(915, 445));
+				
+				//TODO
 			}
 		});
 		jMenuItemImport.setText("Import WSDLs");
@@ -178,6 +200,7 @@ public class Mainform extends JFrame {
 		btnChose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				choseWSDL();
+				btnCancel.setEnabled(true);
 			}
 		});
 		btnChose.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
@@ -185,9 +208,15 @@ public class Mainform extends JFrame {
 		btnChose.setBounds(520, 10, 80, 25);
 		contentPane.add(btnChose);
 		btnCancel = new JButton();
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConfigWorkSpace.wipeCache(Wsdlpath.getText().trim());
+			}
+		});
 		btnCancel.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
-		btnCancel.setText("Cancel");
-		btnCancel.setBounds(610, 10, 80, 25);
+		btnCancel.setText("Wipe Cache");
+		btnCancel.setBounds(610, 10, 101, 25);
+		btnCancel.setEnabled(false);
 		contentPane.add(btnCancel);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -202,15 +231,35 @@ public class Mainform extends JFrame {
 		 */
 		panelConsole = new JPanel();
 		panelConsole.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Console", TitledBorder.LEFT, TitledBorder.TOP, new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12), new Color(0, 0, 0)));
-		panelConsole.setBounds(10, 541, 915, 150);
+		panelConsole.setBounds(10, 541, 915, 300);
 		getContentPane().add(panelConsole);
 		panelConsole.setLayout(null);
 		
 		textAreaConsole = new JTextArea();
 		textAreaConsole.setBackground(SystemColor.control);
 		textAreaConsole.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
+		textAreaConsole.getDocument().addDocumentListener(new DocumentListener(){
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+				textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		scrollPaneConsole = new JScrollPane(textAreaConsole);
-		scrollPaneConsole.setBounds(10, 23, 895, 117);
+		scrollPaneConsole.setBounds(10, 23, 895, 267);
 		scrollPaneConsole.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
 		scrollPaneConsole.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panelConsole.add(scrollPaneConsole);
@@ -245,24 +294,24 @@ public class Mainform extends JFrame {
 //			resultPanel = new ResultReport();
 //			tabbedPane.addTab("Result Report", null, resultPanel, null);
 			
-//			/**
-//			 * Console÷ÿ∂®œÚ
-//			 */
-//			OutputStream textAreaStream = new OutputStream() {
-//				public void write(int b) throws IOException {
-//					textAreaConsole.append(String.valueOf((char)b));
-//				}
-//				public void write(byte b[]) throws IOException {
-//					textAreaConsole.append(new String(b));
-//				}
-//				public void write(byte b[], int off, int len) throws IOException {
-//					textAreaConsole.append(new String(b, off, len));
-//				}
-//			};
-//			PrintStream myOut = new PrintStream(textAreaStream);
-//			System.setOut(myOut);
-//			System.setErr(myOut);
-//			textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
+			/**
+			 * Console÷ÿ∂®œÚ
+			 */
+			OutputStream textAreaStream = new OutputStream() {
+				public void write(int b) throws IOException {
+					textAreaConsole.append(String.valueOf((char)b));
+				}
+				public void write(byte b[]) throws IOException {
+					textAreaConsole.append(new String(b));
+				}
+				public void write(byte b[], int off, int len) throws IOException {
+					textAreaConsole.append(new String(b, off, len));
+				}
+			};
+			PrintStream myOut = new PrintStream(textAreaStream);
+			System.setOut(myOut);
+			System.setErr(myOut);
+			textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
 		}
 	}
 	

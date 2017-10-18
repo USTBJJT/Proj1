@@ -1,4 +1,4 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://pfc.simple.ws" xmlns:impl="http://pfc.simple.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:intf="http://pfc.simple.ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://pfc.simple.ws">
    <element name="login">
     <complexType>
      <sequence>

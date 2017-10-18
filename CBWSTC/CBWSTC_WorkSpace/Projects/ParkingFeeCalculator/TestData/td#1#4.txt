@@ -1,0 +1,8 @@
+sat
+((login_1_License "BJL42422"))
+((login_1_loginTime 0))
+((feeCalculate_1_License "BJP24224"))
+((feeCalculate_1_type 0))
+((feeCalculate_1_timeout 0))
+((feeCalculate_1_dayOfWeek false))
+((feeCalculate_1_discountCoupon false))

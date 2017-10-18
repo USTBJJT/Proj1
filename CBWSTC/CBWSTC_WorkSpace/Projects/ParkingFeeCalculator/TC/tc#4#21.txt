@@ -1,11 +1,11 @@
 <Sequence>
 <Operation name="login" id="1">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:login xmlns:pfc="http://pfc.simple.ws">
+      <pfc:login>
          <!--anonymous type-->
-         <pfc:License>BJL42422</pfc:License>
+         <pfc:License>BJJ24444</pfc:License>
          <!--anonymous type-->
          <pfc:loginTime>0</pfc:loginTime>
       </pfc:login>
@@ -13,18 +13,18 @@
 </soapenv:Envelope>
 </Operation>
 <Operation name="feeCalculate" id="1">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:feeCalculate xmlns:pfc="http://pfc.simple.ws">
+      <pfc:feeCalculate>
          <!--anonymous type-->
-         <pfc:License>BJL42422</pfc:License>
+         <pfc:License>BJJ24444</pfc:License>
          <!--anonymous type - enumeration: [0,1,2]-->
          <pfc:type>1</pfc:type>
          <!--anonymous type-->
          <pfc:timeout>2</pfc:timeout>
          <!--type: boolean-->
-         <pfc:dayOfWeek>false</pfc:dayOfWeek>
+         <pfc:dayOfWeek>true</pfc:dayOfWeek>
          <!--type: boolean-->
          <pfc:discountCoupon>false</pfc:discountCoupon>
       </pfc:feeCalculate>
@@ -32,18 +32,18 @@
 </soapenv:Envelope>
 </Operation>
 <Operation name="feeCalculate">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:feeCalculate xmlns:pfc="http://pfc.simple.ws">
+      <pfc:feeCalculate>
          <!--anonymous type-->
-         <pfc:License>BJL42422</pfc:License>
+         <pfc:License>BJJ24444</pfc:License>
          <!--anonymous type - enumeration: [0,1,2]-->
          <pfc:type>1</pfc:type>
          <!--anonymous type-->
          <pfc:timeout>2</pfc:timeout>
          <!--type: boolean-->
-         <pfc:dayOfWeek>false</pfc:dayOfWeek>
+         <pfc:dayOfWeek>true</pfc:dayOfWeek>
          <!--type: boolean-->
          <pfc:discountCoupon>false</pfc:discountCoupon>
       </pfc:feeCalculate>

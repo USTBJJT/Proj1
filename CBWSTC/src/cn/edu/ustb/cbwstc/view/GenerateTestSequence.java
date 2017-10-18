@@ -133,7 +133,6 @@ public class GenerateTestSequence extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				btnNewButtonGener.setEnabled(false);
 				int Cover = 0;
-				boolean flag = false;
 				if(RadioButtonOcoverage.isSelected()) {
 					Cover = 0;
 				}else if(RadioButtonRMcoverage.isSelected()) {
@@ -141,13 +140,8 @@ public class GenerateTestSequence extends JPanel {
 				}else {
 					Cover = 2;
 				}
-				if(chckbxNewCheckBox.isSelected()) {
-					flag = true;
-				}else {
-					flag = false;
-				}
 				GetInitialTestSequence gts = new GetInitialTestSequence(g,name);
-				tss = gts.chooseCovCri(Cover, flag);
+				tss = gts.chooseCovCri(Cover);
 				model.setRowCount(0);
 				for(int i=0;i<tss.size();i++) {
 					String ce = "";
@@ -206,8 +200,14 @@ public class GenerateTestSequence extends JPanel {
 		btnTestcaseGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
+				boolean flag = false;
+				if(chckbxNewCheckBox.isSelected()) {
+					flag = true;
+				}else {
+					flag = false;
+				}
 				GetInitialTestSequence gts = new GetInitialTestSequence(g,name);
-				gts.getTestCase(tss);
+				gts.getTestCase(tss,flag);
 				
 				//跳转测试用例展示执行界面
 				GenerateTestCase gtcPanel = new GenerateTestCase(url,g,tss,tabbedPane);

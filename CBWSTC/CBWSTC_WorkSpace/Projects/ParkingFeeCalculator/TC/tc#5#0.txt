@@ -1,19 +1,19 @@
 <Sequence>
 <Operation name="feeCalculate" id="1">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:feeCalculate xmlns:pfc="http://pfc.simple.ws">
+      <pfc:feeCalculate>
          <!--anonymous type-->
-         <pfc:License>BJK38437</pfc:License>
+         <pfc:License>BJB74501</pfc:License>
          <!--anonymous type - enumeration: [0,1,2]-->
-         <pfc:type>0</pfc:type>
+         <pfc:type>1</pfc:type>
          <!--anonymous type-->
-         <pfc:timeout>14</pfc:timeout>
+         <pfc:timeout>3</pfc:timeout>
          <!--type: boolean-->
          <pfc:dayOfWeek>true</pfc:dayOfWeek>
          <!--type: boolean-->
-         <pfc:discountCoupon>false</pfc:discountCoupon>
+         <pfc:discountCoupon>true</pfc:discountCoupon>
       </pfc:feeCalculate>
    </soapenv:Body>
 </soapenv:Envelope>

@@ -1,6 +1,8 @@
 (declare-const login_1_License String)
 (declare-const login_1_loginTime Int)
 (assert (= false (str.in.re login_1_License (re.++ (re.++ (re.++ (re.++ (re.++ (re.++ (str.to.re "BJ") (re.range "A" "Y")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")))))
+(assert (>= login_1_loginTime 0))
+(assert (<= login_1_loginTime 24))
 (check-sat)
 (get-value (login_1_License))
 (get-value (login_1_loginTime))

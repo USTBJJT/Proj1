@@ -148,6 +148,7 @@ public class GenerateTestCase extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				ScriptToFrame stc = new ScriptToFrame(url,g,tss);
 				stc.testProcess(tss.size());
+				stc.getArray();
 				ResultReport rrPanel = new ResultReport(tabbedPane);
 				tabbedPane.addTab("Result Report", null, rrPanel, null);
 				rrPanel.setPreferredSize(new Dimension(915, 445));

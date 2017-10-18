@@ -23,11 +23,13 @@ public class TestDateG {
 	private String name = "";
 	private Map<String,Integer> mapOpCount = new HashMap<String,Integer>();
 	private ArrayList<String> conFileComb = new ArrayList<String>(); //约束文件组合字符串
+	private boolean flag;
 	
 	
-	public TestDateG(Graph g,String name) {
+	public TestDateG(Graph g,String name,boolean flag) {
 		this.g = g;
 		this.name= name;
+		this.flag = flag;
 	}
 	
 	public void valueCount() { //写约束求解脚本前,假设所有操作的执行次数为0，之后统计执行次数，进行变量计数替换
@@ -166,6 +168,9 @@ public class TestDateG {
 			if(Result.contains("sat") && (! Result.contains("unsat"))) {
 				String tcdPath = "CBWSTC_WorkSpace/Projects/" + name +"/TestData/td" + "#" + Id + "#" + i + ".txt";
 				writeFile(tcdPath,Result);
+				if(!flag) {
+					break;
+				}
 			}
 		}
 	}

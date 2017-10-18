@@ -150,6 +150,7 @@ public class ScriptToFrame {
 		    			  if(ts.contains(rule)) {
 		    				  testResult = testResult + soapReturn + "\r\nError: Violating the Repeating Calls Constraint when calling " + opName + " operation\r\n";
 		    				  System.out.println(tc + " Error: Violating the Repeating Calls Constraint when calling " + opName + " operation");
+		    				  callC.add(tc);
 		    				  break;
 		    			  }
 		    		  }
@@ -159,17 +160,20 @@ public class ScriptToFrame {
 		    			  if(! rem.check(sequence, regEx)) {
 		    				  testResult = testResult + soapReturn + "\r\nError: Violating the Sequence Constraint when calling " + opName + " operation\r\n";
 		    				  System.out.println(tc + " Error: Violating the Sequence Constraint when calling " + opName + " operation");
+		    				  sequenceC.add(tc);
 		    				  break;
 		    			  }
 		    		  }
 		    		  testResult = testResult + soapReturn + "\r\nError: Violating the Parameter Relation Constraint when calling " + opName + " operation\r\n";
 		    		  System.out.println(tc + " Error: Violating the Parameter Relation Constraint when calling " + opName + " operation");
+		    		  paramRelationC.add(tc);
 		    		  break;
 		    	  }
 		      }else {
 		    	  testResult = testResult  + "Error: Violating the Parameter Range Constraint when calling " + opName + " operation\r\n";
 //		    	  paramRangeC.add(tc);
 		    	  System.out.println(tc + " Error: Violating the parameter range constraint when calling " + opName + " operation");
+		    	  paramRangeC.add(tc);
 		    	  break;
 		    	  //TDOD 违反了参数约束，后续需要进行提醒
 		      }
@@ -259,6 +263,14 @@ public class ScriptToFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void getArray() {
+		
+		System.out.println("paramRangeC: " + paramRangeC.size());
+		System.out.println("sequenceC: " + sequenceC.size());
+		System.out.println("callC: " + callC.size());
+		System.out.println("paramRelationC: " + paramRelationC.size());
 	}
 
 }
