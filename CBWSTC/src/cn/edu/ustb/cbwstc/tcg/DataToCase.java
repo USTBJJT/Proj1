@@ -150,22 +150,22 @@ public class DataToCase {
 		writeFile(tcpath,scripts);
 	}
 	
-	public void generIterationTestCase(String newTs, String oldTs,int tsId,int oldId) {
-		ArrayList<String> dfilePathN = getTestData(oldId);
+	public void generIterationTestCase(String newTs, String oldTs,int tsId) {
+		ArrayList<String> dfilePathN = getTestData(tsId);
 		for(int j=0; j<dfilePathN.size(); j++) {
 			valueCount();//次数初始化
 			String pathS = "CBWSTC_WorkSpace/Projects/" + name + "/TestData/" + dfilePathN.get(j);
-			File path = new File(pathS);
-			String destS = "CBWSTC_WorkSpace/Projects/" + name + "/TestData/td#" + tsId + "#" + dfilePathN.get(j).split("#")[2];
-			File dest = new File(destS);
-			try {
-				FileUtils.copyFile(path, dest);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			File path = new File(pathS);
+//			String destS = "CBWSTC_WorkSpace/Projects/" + name + "/TestData/td#" + tsId + "#" + dfilePathN.get(j).split("#")[2];
+//			File dest = new File(destS);
+//			try {
+//				FileUtils.copyFile(path, dest);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			HashMap<String,String> paramValue = new HashMap<String,String>();
-			paramValue = getValue(destS);
+			paramValue = getValue(pathS);
 			//编写测试脚本
 			//#ef前序正常的调用的测试用例的生成
 			String scripts = "<Sequence>\r\n";
@@ -250,8 +250,12 @@ public class DataToCase {
 			br = new BufferedReader(new FileReader(f));
 			String str = null;
 			try {
+				boolean flag = false;
 				while((str = br.readLine()) != null) {
-					if(! str.equals("sat")) {
+					if(str.equals("sat")) {
+						flag = true;
+					}
+					if(! str.equals("sat") && flag) {
 						//需要进行处理的结果有： (())
 						str = str.substring(2,str.length()-2);
 						//分割时使用第一次出现空格这个形式进行分割即可 前面为变量 后面为数值

@@ -1,7 +1,7 @@
 digraph G{
 graph[fontname="Microsoft YaHei"]
 	subgraph cluster_g{
-		label=<Web Service Behavior Model>;
+		label=<ParkingFeeCalculator Model (2018-01-31)>;
 		node[shape=record,fontname="Microsoft YaHei"];
 		edge[fontname="Microsoft YaHei"];
 		n0[label="n0",shape=circle];

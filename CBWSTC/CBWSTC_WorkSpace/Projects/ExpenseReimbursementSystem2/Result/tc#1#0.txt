@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:totalAmountResponse xmlns:ns="http://exp.simple.ws">
+         <ns:return>0.0</ns:return>
+      </ns:totalAmountResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

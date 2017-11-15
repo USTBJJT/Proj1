@@ -1,0 +1,5 @@
+(= false (= totalAmount_?_tstafflevel "seniormanager")) && (= false (= totalAmount_?_tstafflevel "manager")) && (= false (= totalAmount_?_tstafflevel "supervisor"))
+(> totalAmount_?_tactualmonthlymileage 0)
+(> totalAmount_?_tmonthlysalesamount 0)
+(> totalAmount_?_tairfareamount 0)
+(> totalAmount_?_totherexpensesamount 0)

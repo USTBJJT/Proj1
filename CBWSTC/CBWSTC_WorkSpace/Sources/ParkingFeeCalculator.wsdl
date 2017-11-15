@@ -92,7 +92,7 @@
   <wsdl:portType name="ParkingFeeCalculator">
     <wsdl:operation name="login">
 <wsdl:documentation>
-			{&quot;paraRelation&quot;:&quot;&quot;, &quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;&quot;,&quot;preCT&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;false&quot;}
+			{&quot;paraRelation&quot;:[],&quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:[],&quot;preOp&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;false&quot;}
 		</wsdl:documentation>
       <wsdl:input name="loginRequest" message="impl:loginRequest">
     </wsdl:input>
@@ -101,7 +101,7 @@
     </wsdl:operation>
     <wsdl:operation name="feeCalculate">
 <wsdl:documentation>
-			{&quot;paraRelation&quot;:&quot;feeCalculateRequest.License == loginRequest.License AND feeCalculateRequest.timeout &gt;= loginRequest.loginTime&quot;, &quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ)&quot;,&quot;preCT&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;false&quot;}
+			{&quot;paraRelation&quot;:[&quot;feeCalculate.License = login.License&quot;,&quot;feeCalculate.timeout &gt;= login.loginTime&quot;],&quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:[],&quot;preOp&quot;:&quot;((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ)&quot;,&quot;Iteration&quot;:&quot;false&quot;}
 		</wsdl:documentation>
       <wsdl:input name="feeCalculateRequest" message="impl:feeCalculateRequest">
     </wsdl:input>
@@ -131,7 +131,7 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ParkingFeeCalculator">
-<wsdl:documentation>{&quot;sTime&quot;:&quot;2017-03-01&quot;, &quot;eTime&quot;:&quot;2017-08-17&quot;}</wsdl:documentation>
+<wsdl:documentation>{&quot;eTime&quot;:&quot;2018-01-31&quot;}</wsdl:documentation>
     <wsdl:port name="ParkingFeeCalculator" binding="impl:ParkingFeeCalculatorSoapBinding">
       <wsdlsoap:address location="http://localhost:8080/axis2/services/ParkingFeeCalculator/"/>
     </wsdl:port>

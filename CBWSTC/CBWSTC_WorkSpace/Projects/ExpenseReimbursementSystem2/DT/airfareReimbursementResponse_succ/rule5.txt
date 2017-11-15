@@ -1,0 +1,4 @@
+(= airfareReimbursement_?_stafflevel "manager")
+(>= airfareReimbursement_?_monthlysalesamount 0) && (<= airfareReimbursement_?_monthlysalesamount 50000)
+(> airfareReimbursement_?_airfareamount 0)
+(> airfareReimbursement_?_otherexpensesamount 0)

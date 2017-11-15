@@ -1,0 +1,9 @@
+(error "line 7 column 34: unknown constant login_0_License")
+(error "line 11 column 38: unknown constant login_0_loginTime")
+(error "line 12 column 37: unknown constant login_0_loginTime")
+sat
+((feeCalculate_1_License "BJP44242"))
+((feeCalculate_1_type 0))
+((feeCalculate_1_timeout 0))
+((feeCalculate_1_dayOfWeek true))
+((feeCalculate_1_discountCoupon true))

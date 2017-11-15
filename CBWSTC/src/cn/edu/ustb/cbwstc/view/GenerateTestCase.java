@@ -31,6 +31,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 
@@ -100,7 +101,7 @@ public class GenerateTestCase extends JPanel {
 		
 		//Õ¹Ê¾²¼¾Ö
 		JPanel panelShow = new JPanel();
-		panelShow.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "TC Show", TitledBorder.LEADING, TitledBorder.TOP, new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12), new Color(0, 0, 0)));
+		panelShow.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "TC View", TitledBorder.LEADING, TitledBorder.TOP, new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12), new Color(0, 0, 0)));
 		panelShow.setBounds(255, 10, 650, 425);
 		add(panelShow);
 		panelShow.setLayout(null);
@@ -148,9 +149,10 @@ public class GenerateTestCase extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				ScriptToFrame stc = new ScriptToFrame(url,g,tss);
 				stc.testProcess(tss.size());
-				stc.getArray();
-				ResultReport rrPanel = new ResultReport(tabbedPane);
-				tabbedPane.addTab("Result Report", null, rrPanel, null);
+				ResultReport rrPanel = new ResultReport(tabbedPane,stc.geteTimeC(),
+						stc.getparamRangeC(),stc.getsequenceC(),
+						stc.getcallC(),stc.getparamRelationC(),stc.getinvokeC(), stc.getipRangeC(),tss, url);
+				tabbedPane.addTab("Test Report", null, rrPanel, null);
 				rrPanel.setPreferredSize(new Dimension(915, 445));
 			}
 		});
@@ -159,7 +161,7 @@ public class GenerateTestCase extends JPanel {
 		panel.add(btnNewButton);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setText("Click \"Execution\" button\r\nExecuting the above Test Cases");
+		textArea.setText("Click \"Execution\" button\r\nExecuting the above Test Suite");
 		textArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
 		textArea.setBackground(SystemColor.menu);
 		textArea.setBounds(10, 31, 215, 43);

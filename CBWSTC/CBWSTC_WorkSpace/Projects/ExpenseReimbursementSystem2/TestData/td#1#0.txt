@@ -1,0 +1,6 @@
+sat
+((totalAmount_1_tstafflevel "manager"))
+((totalAmount_1_tactualmonthlymileage 1.0))
+((totalAmount_1_tmonthlysalesamount 1.0))
+((totalAmount_1_tairfareamount 1.0))
+((totalAmount_1_totherexpensesamount 1.0))

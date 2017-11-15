@@ -32,10 +32,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -115,7 +117,7 @@ public class ParsePanel extends JPanel {
 		parsePanel.add(textAreaURL);
 		textAreaURL.setLineWrap(true);
 		textAreaURL.setWrapStyleWord(true);
-		textAreaURL.append("Parse the WSDL you have choose, obtain the operations and associated constraints provided by the Web Service.");
+		textAreaURL.append("Parse the WSDL you have chosen, obtain the operations and associated constraints provided by the Web Service.");
 		
 		btnParseButton = new JButton("Parse");
 		btnParseButton.addActionListener(new ActionListener() {
@@ -192,7 +194,7 @@ public class ParsePanel extends JPanel {
 		ConSetPanel.add(panelSequence);
 		panelSequence.setLayout(null);
 		
-		btnAddButton = new JButton("Add Sequence");
+		btnAddButton = new JButton("Add Correlation");
 		btnAddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Converter c = new Converter(map);
@@ -208,7 +210,7 @@ public class ParsePanel extends JPanel {
 			}
 		});
 		btnAddButton.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
-		btnAddButton.setBounds(345, 208, 120, 25);
+		btnAddButton.setBounds(325, 208, 140, 25);
 		panelSequence.add(btnAddButton);
 		
 		lblpreOPLabel = new JLabel("preOP:");
@@ -217,9 +219,9 @@ public class ParsePanel extends JPanel {
 		panelSequence.add(lblpreOPLabel);
 		
 		
-		JLabel label = new JLabel("Set Connect Between Nodes:");
+		JLabel label = new JLabel("Set the correlation between nodes:");
 		label.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 12));
-		label.setBounds(21, 100, 180, 25);
+		label.setBounds(21, 100, 213, 25);
 		panelSequence.add(label);
 		
 //		lblSqLabel = new JLabel("Sequence:");
@@ -314,6 +316,16 @@ public class ParsePanel extends JPanel {
 		Converter c = new Converter(map);
 		g = new Graph();
 		g = c.initialNode(name);
+		
+		//≈–∂œ ±º‰
+		Date d = g.getEndTime();
+		Date now = new Date();
+		if(now.before(d)) {
+//			JOptionPane.showMessageDialog(null, "now is small than eTime", "WARNING", JOptionPane.WARNING_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(null, "There is a risk of service use beyond service effective time: " + d, "WARNING", JOptionPane.WARNING_MESSAGE);
+		}
+		
 		LinkedHashSet<Node> nodes = g.getNodes();
 		ArrayList<String> OPI = readwsdl.getOpNameInputName();
 		for(int i = 0; i < OPI.size(); i++) {

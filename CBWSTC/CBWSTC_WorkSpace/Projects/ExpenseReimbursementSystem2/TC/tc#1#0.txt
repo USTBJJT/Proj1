@@ -1,0 +1,21 @@
+<Sequence>
+<Operation name="totalAmount" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:totalAmount xmlns:exp="http://exp.simple.ws">
+         <!--anonymous type - enumeration: [seniormanager,manager,supervisor]-->
+         <exp:tstafflevel>manager</exp:tstafflevel>
+         <!--anonymous type-->
+         <exp:tactualmonthlymileage>1.0</exp:tactualmonthlymileage>
+         <!--anonymous type-->
+         <exp:tmonthlysalesamount>1.0</exp:tmonthlysalesamount>
+         <!--anonymous type-->
+         <exp:tairfareamount>1.0</exp:tairfareamount>
+         <!--anonymous type-->
+         <exp:totherexpensesamount>1.0</exp:totherexpensesamount>
+      </exp:totalAmount>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+</Sequence>

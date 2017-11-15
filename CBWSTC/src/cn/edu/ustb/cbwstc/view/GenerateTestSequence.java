@@ -67,7 +67,7 @@ public class GenerateTestSequence extends JPanel {
 		//²é¿´Ä£ÐÍ²¼¾Ö
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Model Show", TitledBorder.LEADING, TitledBorder.TOP, new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12), new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Model View", TitledBorder.LEADING, TitledBorder.TOP, new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12), new Color(0, 0, 0)));
 		panel.setBounds(10, 10, 275, 140);
 		add(panel);
 		
@@ -83,7 +83,7 @@ public class GenerateTestSequence extends JPanel {
 		panel.add(button);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setText("Click \"ShowPic\" button\r\nBrowsing the service Behavior Model");
+		textArea.setText("Click \"ShowPic\" button\r\nBrowsing the Service Behavior Model");
 		textArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
 		textArea.setBackground(SystemColor.menu);
 		textArea.setBounds(25, 41, 226, 38);
@@ -96,19 +96,19 @@ public class GenerateTestSequence extends JPanel {
 		add(panelCoverage);
 		panelCoverage.setLayout(null);
 		
-		JRadioButton RadioButtonOcoverage = new JRadioButton("Operation coverage",true);
+		JRadioButton RadioButtonOcoverage = new JRadioButton("Request-Node Covering",true);
 		RadioButtonOcoverage.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
-		RadioButtonOcoverage.setBounds(25, 63, 142, 23);
+		RadioButtonOcoverage.setBounds(25, 63, 172, 23);
 		panelCoverage.add(RadioButtonOcoverage);
 		
-		JRadioButton RadioButtonRMcoverage = new JRadioButton("Response-Message coverage");
+		JRadioButton RadioButtonRMcoverage = new JRadioButton("Response-Node Covering");
 		RadioButtonRMcoverage.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
-		RadioButtonRMcoverage.setBounds(181, 63, 199, 23);
+		RadioButtonRMcoverage.setBounds(217, 63, 199, 23);
 		panelCoverage.add(RadioButtonRMcoverage);
 		
-		JRadioButton RadioButtonEcoverage = new JRadioButton("Edge coverage");
+		JRadioButton RadioButtonEcoverage = new JRadioButton("Edge covering");
 		RadioButtonEcoverage.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
-		RadioButtonEcoverage.setBounds(393, 63, 121, 23);
+		RadioButtonEcoverage.setBounds(418, 63, 121, 23);
 		panelCoverage.add(RadioButtonEcoverage);
 		
 		ButtonGroup group = new ButtonGroup();

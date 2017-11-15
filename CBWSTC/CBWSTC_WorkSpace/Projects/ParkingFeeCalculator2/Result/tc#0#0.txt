@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:loginResponse xmlns:ns="http://pfc.simple.ws">
+         <ns:return>true</ns:return>
+      </ns:loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>soapenv:Server</faultcode>
+         <faultstring>No such method 'feeCalculate' in class ws.simple.pfc.ParkingFeeCalculator</faultstring>
+         <detail/>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>
+Error: The Service Implementation does not match the Description, No such method: feeCalculate

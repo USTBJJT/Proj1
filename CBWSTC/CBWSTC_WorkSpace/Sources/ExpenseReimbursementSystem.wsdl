@@ -5,11 +5,47 @@
    <element name="totalAmount">
     <complexType>
      <sequence>
-      <element name="tstafflevel" type="xsd:string"/>
-      <element name="tactualmonthlymileage" type="xsd:double"/>
-      <element name="tmonthlysalesamount" type="xsd:double"/>
-      <element name="tairfareamount" type="xsd:double"/>
-      <element name="totherexpensesamount" type="xsd:double"/>
+      <element name="tstafflevel">
+		<simpleType>
+      		<restriction base="string">
+      			<enumeration value="seniormanager"/>
+      			<enumeration value="manager"/>
+      			<enumeration value="supervisor"/>
+      		</restriction>
+      	</simpleType>
+	  </element>
+      <element name="tactualmonthlymileage">
+		<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+	  </element>
+      <element name="tmonthlysalesamount">
+		<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+	  </element>
+      <element name="tairfareamount">
+		<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+	  </element>
+      <element name="totherexpensesamount">
+		<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+	  </element>
      </sequence>
     </complexType>
    </element>
@@ -123,21 +159,21 @@
   </wsdl:message>
   <wsdl:portType name="ExpenseReimbursementSystem">
     <wsdl:operation name="totalAmount">
-<wsdl:documentation>{&quot;userAttribute&quot;:&quot;&quot;, &quot;ipRegion&quot;:&quot;202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])&quot;,&quot;invokeOp&quot;:&quot;calculateReimbursementAmount/airfareReimbursement&quot;,&quot;preOp&quot;:&quot;&quot;,&quot;preCT&quot;:&quot;&quot;}</wsdl:documentation>
+<wsdl:documentation>{&quot;paraRelation&quot;:[],&quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:[&quot;calculateReimbursementAmount&quot;,&quot;airfareReimbursement&quot;],&quot;preOp&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;true&quot;}</wsdl:documentation>
       <wsdl:input name="totalAmountRequest" message="impl:totalAmountRequest">
     </wsdl:input>
       <wsdl:output name="totalAmountResponse" message="impl:totalAmountResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="calculateReimbursementAmount">
-<wsdl:documentation>{&quot;userAttribute&quot;:&quot;stafflevel=seniormanager|manager&quot;, &quot;ipRegion&quot;:&quot;202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;&quot;,&quot;preCT&quot;:&quot;&quot;}</wsdl:documentation>
+<wsdl:documentation>{&quot;paraRelation&quot;:[],&quot;ipRegion&quot;:&quot;202.203.62.0-202.203.62.255&quot;,&quot;invokeOp&quot;:[],&quot;preOp&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;true&quot;}</wsdl:documentation>
       <wsdl:input name="calculateReimbursementAmountRequest" message="impl:calculateReimbursementAmountRequest">
     </wsdl:input>
       <wsdl:output name="calculateReimbursementAmountResponse" message="impl:calculateReimbursementAmountResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="airfareReimbursement">
-<wsdl:documentation>{&quot;userAttribute&quot;:&quot;&quot;, &quot;ipRegion&quot;:&quot;202\\.204\\.62\\.(25[0-5]|2[0-4][0-9]|[0-9]|[1-9]{2}|1[0-9][0-9])&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;&quot;,&quot;preCT&quot;:&quot;&quot;}</wsdl:documentation>
+<wsdl:documentation>{&quot;paraRelation&quot;:[],&quot;ipRegion&quot;:&quot;202.203.62.0-202.203.62.255&quot;,&quot;invokeOp&quot;:[],&quot;preOp&quot;:&quot;&quot;,&quot;Iteration&quot;:&quot;true&quot;}</wsdl:documentation>
       <wsdl:input name="airfareReimbursementRequest" message="impl:airfareReimbursementRequest">
     </wsdl:input>
       <wsdl:output name="airfareReimbursementResponse" message="impl:airfareReimbursementResponse">
@@ -175,7 +211,7 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ExpenseReimbursementSystem">
-<wsdl:documentation>{&quot;sTime&quot;:&quot;2017-03-01&quot;, &quot;eTime&quot;:&quot;2017-06-01&quot;}</wsdl:documentation>
+<wsdl:documentation>{&quot;eTime&quot;:&quot;2018-01-31&quot;}</wsdl:documentation>
     <wsdl:port name="ExpenseReimbursementSystem" binding="impl:ExpenseReimbursementSystemSoapBinding">
       <wsdlsoap:address location="http://localhost:8080/axis2/services/ExpenseReimbursementSystem/"/>
     </wsdl:port>

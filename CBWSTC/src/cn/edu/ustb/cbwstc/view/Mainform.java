@@ -45,8 +45,10 @@ import javax.swing.JLabel;
 
 
 
+
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import cn.edu.ustb.cbwstc.config.ConfigWorkSpace;
+import cn.edu.ustb.cbwstc.util.InvokeCmd;
 
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
@@ -112,7 +114,7 @@ public class Mainform extends JFrame {
 	 * Create the frame.
 	 */
 	public Mainform() {
-		setTitle("CBWSTC");
+		setTitle("MDGen");
 		ImageIcon icon = new ImageIcon("CBWSTC_WorkSpace/Pic/xmlr.png");
 		this.setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -151,14 +153,11 @@ public class Mainform extends JFrame {
 		jMenuItemImport = new JMenuItem();
 		jMenuItemImport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ResultReport rr= new ResultReport(tabbedPane);
-				tabbedPane.addTab("Result Report", null, rr, null);
-				rr.setPreferredSize(new Dimension(915, 445));
-				
+				reStartAction(e);
 				//TODO
 			}
 		});
-		jMenuItemImport.setText("Import WSDLs");
+		jMenuItemImport.setText("Restart");
 		mnFile.add(jMenuItemImport);
 		
 		/**
@@ -167,12 +166,22 @@ public class Mainform extends JFrame {
 		jMenuItemRun = new JMenuItem();
 		jMenuItemRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cmd = "cmd /c D:\\Tomcat\\\"Tomcat 6.0\"\\bin\\startup.bat";
+				InvokeCmd runTomcat = new InvokeCmd();
+				runTomcat.execCmd(cmd);
 			}
 		});
 		jMenuItemRun.setText("Run Tomcat");
 		mnRun.add(jMenuItemRun);
 		
 		jMenuItemStop = new JMenuItem();
+		jMenuItemStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cmd = "cmd /c D:\\Tomcat\\\"Tomcat 6.0\"\\bin\\shutdown.bat";
+				InvokeCmd runTomcat = new InvokeCmd();
+				runTomcat.execCmd(cmd);
+			}
+		});
 		jMenuItemStop.setText("Stop Tomcat");
 		mnRun.add(jMenuItemStop);
 		
@@ -215,7 +224,7 @@ public class Mainform extends JFrame {
 		});
 		btnCancel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 12));
 		btnCancel.setText("Wipe Cache");
-		btnCancel.setBounds(610, 10, 101, 25);
+		btnCancel.setBounds(610, 10, 112, 25);
 		btnCancel.setEnabled(false);
 		contentPane.add(btnCancel);
 		
@@ -363,6 +372,21 @@ public class Mainform extends JFrame {
 			}
 		}	
 		
+	}
+	
+	private void reStartAction(ActionEvent evt) {                                           
+	    // TODO add your handling code here:
+	  //Restart
+		/*getContentPane().add(jPanel1);
+		jPanel1.setVisible(true);
+		remove(functionPanel);
+		functionPanel.setVisible(false);*/
+		
+//		System.exit(EXIT_ON_CLOSE);
+		dispose();
+		Mainform frame = new Mainform();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 	}
 	
 }

@@ -1,0 +1,7 @@
+(declare-const calculateReimbursementAmount_1_stafflevel String)
+(declare-const calculateReimbursementAmount_1_actualmonthlymileage Real)
+(assert (= calculateReimbursementAmount_1_stafflevel "seniormanager"))
+(assert (< calculateReimbursementAmount_1_actualmonthlymileage 0))
+(check-sat)
+(get-value (calculateReimbursementAmount_1_stafflevel))
+(get-value (calculateReimbursementAmount_1_actualmonthlymileage))

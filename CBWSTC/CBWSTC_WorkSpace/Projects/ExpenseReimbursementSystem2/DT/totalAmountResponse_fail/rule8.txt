@@ -1,0 +1,5 @@
+(= totalAmount_?_tstafflevel "manager")
+(> totalAmount_?_tactualmonthlymileage 0)
+(> totalAmount_?_tmonthlysalesamount 0)
+(< totalAmount_?_tairfareamount 0)
+(> totalAmount_?_totherexpensesamount 0)

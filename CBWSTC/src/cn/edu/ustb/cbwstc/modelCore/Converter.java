@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import org.apache.xmlbeans.XmlDuration;
 import org.apache.xmlbeans.impl.util.Base64;
 import org.apache.xmlbeans.impl.util.HexBin;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import nl.flotsam.xeger.Xeger;
 import cn.edu.ustb.cbwstc.model.Condition;
@@ -577,78 +579,83 @@ public class Converter {
 			 * 
 			 */
 			
-			/**
+			if(getParType(sType).equals("double") || getParType(sType).equals("float")) {
+				e.setNumLimite(false);
+			}else {
+				/**
 			 * 参数的范围limit约束,根据minI minE maxI maxE 获取
 			 */
-			e.setNumLimite(true);
-			BigDecimal lowN = null;
-			boolean low = true;
-			XmlDecimal xmlD;
-			xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_INCLUSIVE);
-			BigDecimal minI = xmlD != null ? xmlD.getBigDecimalValue() : null;
+				e.setNumLimite(true);
+				BigDecimal lowN = null;
+				boolean low = true;
+				XmlDecimal xmlD;
+				xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_INCLUSIVE);
+				BigDecimal minI = xmlD != null ? xmlD.getBigDecimalValue() : null;
 			
-			xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_EXCLUSIVE);
-			BigDecimal minE = xmlD != null ? xmlD.getBigDecimalValue() : null;
+				xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_EXCLUSIVE);
+				BigDecimal minE = xmlD != null ? xmlD.getBigDecimalValue() : null;
 			
-			if (minI != null && minE != null) {
-				if(minI.compareTo(minE) > 0) {
+				if (minI != null && minE != null) {
+					if(minI.compareTo(minE) > 0) {
+						lowN = minI;
+					}else {
+						lowN = minE;
+					}
+				}else if(minI != null) {
 					lowN = minI;
-				}else {
+				}else if(minE != null) {
 					lowN = minE;
-				}
-			}else if(minI != null) {
-				lowN = minI;
-			}else if(minE != null) {
-				lowN = minE;
-			}else {
-				low = false;
-			}
-
-			BigDecimal highN = null;
-			boolean high = true;
-			xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_INCLUSIVE);
-			BigDecimal maxI = xmlD != null ? xmlD.getBigDecimalValue() : null;
-			
-			xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_EXCLUSIVE);
-			BigDecimal maxE = xmlD != null ? xmlD.getBigDecimalValue() : null;
-			
-			if (maxI != null && maxE != null) {
-				if(maxI.compareTo(maxE) < 0) {
-					highN = maxI;
 				}else {
-					highN = maxE;
+					low = false;
 				}
-			}else if(minI != null) {
-				highN = maxI;
-			}else if(minE != null) {
-				highN = maxE;
-			}else {
-				high = false;
+
+				BigDecimal highN = null;
+				boolean high = true;
+				xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_INCLUSIVE);
+				BigDecimal maxI = xmlD != null ? xmlD.getBigDecimalValue() : null;
+				
+				xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_EXCLUSIVE);
+				BigDecimal maxE = xmlD != null ? xmlD.getBigDecimalValue() : null;
+			
+				if (maxI != null && maxE != null) {
+					if(maxI.compareTo(maxE) < 0) {
+						highN = maxI;
+					}else {
+						highN = maxE;
+					}
+				}else if(minI != null) {
+					highN = maxI;
+				}else if(minE != null) {
+					highN = maxE;
+				}else {
+					high = false;
+				}
+			
+				if(high && low) {
+//					System.out.println("有high low");
+					e.setHighLimite(highN.toString());
+					e.setLowLimite(lowN.toString());
+//					System.out.println(highN.toString());
+//					System.out.println(lowN.toString());
+				}else if(high && !low) {
+//					System.out.println("有high");
+					e.setHighLimite(highN.toString());
+					lowN = highN.add(new BigDecimal(-50));
+					e.setLowLimite(lowN.toString());
+//					System.out.println(highN.toString());
+//					System.out.println(lowN.toString());
+				}else if(!high && low) {
+//					System.out.println("有low");
+					e.setLowLimite(lowN.toString());
+					highN = lowN.add(new BigDecimal(50));
+//					System.out.println(highN.toString());
+//					System.out.println(lowN.toString());
+				}else {
+//					System.out.println("没有high low");
+					e.setNumLimite(false);
+				}
 			}
 			
-			if(high && low) {
-//				System.out.println("有high low");
-				e.setHighLimite(highN.toString());
-				e.setLowLimite(lowN.toString());
-//				System.out.println(highN.toString());
-//				System.out.println(lowN.toString());
-			}else if(high && !low) {
-//				System.out.println("有high");
-				e.setHighLimite(highN.toString());
-				lowN = highN.add(new BigDecimal(-50));
-				e.setLowLimite(lowN.toString());
-//				System.out.println(highN.toString());
-//				System.out.println(lowN.toString());
-			}else if(!high && low) {
-//				System.out.println("有low");
-				e.setLowLimite(lowN.toString());
-				highN = lowN.add(new BigDecimal(50));
-//				System.out.println(highN.toString());
-//				System.out.println(lowN.toString());
-			}else {
-//				System.out.println("没有high low");
-				e.setNumLimite(false);
-			}
 			/**
 			 * 
 			 */
@@ -743,19 +750,19 @@ public class Converter {
 						//设置约束
 						if(str.split("#")[3].equals("NullDocumentation")) {
 							//没有约束
-							nodeI.setInvokeOpC("NullConstraint");
+							nodeI.setInvokeOpC(null);
 							nodeI.setIpRegionC("NullConstraint");
 							nodeI.setIterationC(true);
 							nodeI.setPreOpC("NullConstraint");
-							nodeI.setParaRelationC("NullConstraint");
+							nodeI.setParaRelationC(null);
 						}else {
 							String json = str.split("#")[3];
 							JSONObject obj = JSONObject.fromObject(json);
-							String ParaRelationC = obj.getString("paraRelation");
-							if(ParaRelationC.trim().equals("")) {
-								nodeI.setParaRelationC("NullConstraint");
+							JSONArray ParaRelationC = obj.getJSONArray("paraRelation");
+							if(ParaRelationC == null || ParaRelationC.size() == 0) {
+								nodeI.setParaRelationC(null);
 							}else {
-								nodeI.setParaRelationC(ParaRelationC.trim());
+								nodeI.setParaRelationC(ParaRelationC);
 							}
 							String IpRegionC = obj.getString("ipRegion");
 							if(IpRegionC.trim().equals("")) {
@@ -763,11 +770,11 @@ public class Converter {
 							}else {
 								nodeI.setIpRegionC(IpRegionC.trim());
 							}
-							String InvokeOpC = obj.getString("invokeOp");
-							if(InvokeOpC.trim().equals("")) {
-								nodeI.setInvokeOpC("NullConstraint");
+							JSONArray InvokeOpC = obj.getJSONArray("invokeOp");
+							if(InvokeOpC == null || InvokeOpC.size() == 0) {
+								nodeI.setInvokeOpC(null);
 							}else {
-								nodeI.setInvokeOpC(InvokeOpC.trim());
+								nodeI.setInvokeOpC(InvokeOpC);
 							}
 							String preOpC = obj.getString("preOp");
 							if(preOpC.trim().equals("")) {
@@ -877,7 +884,7 @@ public class Converter {
 	}
 	
 	private void writeToPngText(Graph g,String name) { //生成可视化文件
-		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			FileOutputStream out = new FileOutputStream("CBWSTC_WorkSpace/Projects/" + name + "/Model/ModelPng.txt");
 			BufferedWriter outfile = new BufferedWriter(new OutputStreamWriter(
@@ -888,7 +895,7 @@ public class Converter {
 			outfile.write("digraph G{\r\n"
 					+ "graph[fontname=\"Microsoft YaHei\"]\r\n"
 					+ "	subgraph cluster_g{\r\n"
-					+ "		label=<Web Service Behavior Model>;\r\n"
+					+ "		label=<" + name + " Model (" + format.format(g.getEndTime()) + ")>;\r\n"
 					+ "		node[shape=record,fontname=\"Microsoft YaHei\"];\r\n"
 					+ "		edge[fontname=\"Microsoft YaHei\"];\r\n");
 			for(Node node : nodes) {

@@ -1,0 +1,15 @@
+<Sequence>
+<Operation name="calculateReimbursementAmount" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:calculateReimbursementAmount xmlns:exp="http://exp.simple.ws">
+         <!--anonymous type - enumeration: [seniormanager,manager]-->
+         <exp:stafflevel>manager</exp:stafflevel>
+         <!--anonymous type-->
+         <exp:actualmonthlymileage>4001.0</exp:actualmonthlymileage>
+      </exp:calculateReimbursementAmount>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+</Sequence>

@@ -1,0 +1,2 @@
+(= false (str.in.re login_?_License (re.++ (re.++ (re.++ (re.++ (re.++ (re.++ (str.to.re "BJ") (re.range "A" "Y")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9")) (re.range "0" "9"))))
+(>= login_?_loginTime 0) && (<= login_?_loginTime 24)

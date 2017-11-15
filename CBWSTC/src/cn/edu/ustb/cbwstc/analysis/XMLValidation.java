@@ -18,8 +18,8 @@ public class XMLValidation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File xsd = new File("CBWSTC_WorkSpace/Projects/ParkingFeeCalculator/XSD/ParkingFeeCalculator.xsd");
-		File xml = new File("E:/FeeCalculate.xml");
+		File xsd = new File("CBWSTC_WorkSpace/Projects/ExpenseReimbursementSystem/XSD/ExpenseReimbursementSystem.xsd");
+		File xml = new File("E:/airfareReimbursement.xml");
 		System.out.println("calculateReimbursementAmount.xml validates against exp.xsd? "+validateXMLSchema(xsd, xml));
 
 	}

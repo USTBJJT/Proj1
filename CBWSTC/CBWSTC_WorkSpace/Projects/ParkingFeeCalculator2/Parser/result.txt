@@ -1,0 +1,3 @@
+ParkingFeeCalculator2#{"eTime":"2017-01-31"}
+login#login#loginResponse#{"paraRelation":[],"ipRegion":"","invokeOp":[],"preOp":"","Iteration":"false"}
+feeCalculate#feeCalculate#feeCalculateResponse#{"paraRelation":["feeCalculateRequest_License = loginRequest_License","feeCalculateRequest_timeout >= loginRequest_loginTime"],"ipRegion":"","invokeOp":[],"preOp":"((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ)","Iteration":"false"}

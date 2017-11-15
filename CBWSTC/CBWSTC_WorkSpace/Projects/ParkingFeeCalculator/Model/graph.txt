@@ -1,13 +1,13 @@
 nodes.size()9
-0 Start initial     false
-1 Init initial     false
-2 login input login_?_License#String login_?_loginTime#int NullConstraint NullConstraint NullConstraint NullConstraint false
-3 loginResponse_succ output     false
-4 loginResponse_fail output     false
-5 feeCalculate input feeCalculate_?_License#String feeCalculate_?_type#int feeCalculate_?_timeout#int feeCalculate_?_dayOfWeek#boolean feeCalculate_?_discountCoupon#boolean feeCalculateRequest.License == loginRequest.License AND feeCalculateRequest.timeout >= loginRequest.loginTime NullConstraint NullConstraint ((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ) false
-6 feeCalculateResponse_succ output     false
-7 feeCalculateResponse_fail output     false
-8 End end     false
+0 Start initial null  null  false
+1 Init initial null  null  false
+2 login input login_?_License#String login_?_loginTime#int null NullConstraint null NullConstraint false
+3 loginResponse_succ output null  null  false
+4 loginResponse_fail output null  null  false
+5 feeCalculate input feeCalculate_?_License#String feeCalculate_?_type#int feeCalculate_?_timeout#int feeCalculate_?_dayOfWeek#boolean feeCalculate_?_discountCoupon#boolean ["feeCalculate.License = login.License","feeCalculate.timeout >= login.loginTime"] NullConstraint null ((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ) false
+6 feeCalculateResponse_succ output null  null  false
+7 feeCalculateResponse_fail output null  null  false
+8 End end null  null  false
 edges.size()12
 e0 0 1
 e1 1 2

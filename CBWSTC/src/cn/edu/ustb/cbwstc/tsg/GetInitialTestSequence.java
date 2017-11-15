@@ -441,23 +441,34 @@ public class GetInitialTestSequence {
 				DataToCase dtc = new DataToCase(name,g);
 				dtc.generTestCase(tss.get(i).getTs(),tss.get(i).getTcId());
 			}else if(tss.get(i).getType().equals("negative(PreOp)")) {
+				String ts = tss.get(i).getTs();
+				int size = ts.split("#").length -1;
+				String newTs = ts + "#ef#" + ts.split("#")[size] + "Response_succ";
+				tdg.testSequenceProcess(newTs,tss.get(i).getTcId()); //测试序列字符串传过去
+				//将测试数据按照框架转换为soap测试脚本
 				DataToCase dtc = new DataToCase(name,g);
-				dtc.generPreOpTestCase(tss.get(i).getTs(),tss.get(i).getTcId());
+				dtc.generTestCase(newTs,tss.get(i).getTcId());
+//				DataToCase dtc = new DataToCase(name,g);
+//				dtc.generPreOpTestCase(tss.get(i).getTs(),tss.get(i).getTcId());
 			}else {
 				//处理字符串，找到#ef前的正确调用
 				String str = tss.get(i).getTs();
 				int index = str.indexOf("#ef");
 				String oldStr = str.substring(0, index);
 				String newStr = str.substring(index + 4);
-				for (int j=0;j<tss.size();j++) {
-					if(tss.get(j).getTs().contains(oldStr)) {
-						int Id = tss.get(j).getTcId();
-						//已经有的testData数据进行重命名复制
-						DataToCase dtc = new DataToCase(name,g);
-						dtc.generIterationTestCase(newStr, oldStr, tss.get(i).getTcId(), Id);
-						break;
-					}
-				}
+				tdg.testSequenceProcess(oldStr,tss.get(i).getTcId()); //测试序列字符串传过去
+				//将测试数据按照框架转换为soap测试脚本
+				DataToCase dtc = new DataToCase(name,g);
+				dtc.generIterationTestCase(newStr, oldStr, tss.get(i).getTcId());
+//				for (int j=0;j<tss.size();j++) {
+//					if(tss.get(j).getTs().contains(oldStr)) {
+//						int Id = tss.get(j).getTcId();
+//						//已经有的testData数据进行重命名复制
+//						DataToCase dtc = new DataToCase(name,g);
+//						dtc.generIterationTestCase(newStr, oldStr, tss.get(i).getTcId(), Id);
+//						break;
+//					}
+//				}
 			}
 		}
 	}

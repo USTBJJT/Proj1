@@ -1,0 +1,4 @@
+(= false (= airfareReimbursement_?_stafflevel "seniormanager")) && (= false (= airfareReimbursement_?_stafflevel "manager")) && (= false (= airfareReimbursement_?_stafflevel "supervisor"))
+(>= airfareReimbursement_?_monthlysalesamount 0) && (<= airfareReimbursement_?_monthlysalesamount 50000)
+(> airfareReimbursement_?_airfareamount 0)
+(> airfareReimbursement_?_otherexpensesamount 0)

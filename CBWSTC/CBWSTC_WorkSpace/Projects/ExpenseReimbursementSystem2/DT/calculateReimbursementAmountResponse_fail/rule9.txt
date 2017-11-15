@@ -1,0 +1,1 @@
+(= false (= calculateReimbursementAmount_?_stafflevel "seniormanager")) && (= false (= calculateReimbursementAmount_?_stafflevel "manager"))

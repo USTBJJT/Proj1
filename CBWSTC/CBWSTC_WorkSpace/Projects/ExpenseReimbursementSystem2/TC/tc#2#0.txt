@@ -1,0 +1,19 @@
+<Sequence>
+<Operation name="airfareReimbursement" id="1">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:airfareReimbursement xmlns:exp="http://exp.simple.ws">
+         <!--anonymous type - enumeration: [seniormanager,manager,supervisor]-->
+         <exp:stafflevel>supervisor</exp:stafflevel>
+         <!--anonymous type-->
+         <exp:monthlysalesamount>0.0</exp:monthlysalesamount>
+         <!--anonymous type-->
+         <exp:airfareamount>1.0</exp:airfareamount>
+         <!--anonymous type-->
+         <exp:otherexpensesamount>1.0</exp:otherexpensesamount>
+      </exp:airfareReimbursement>
+   </soapenv:Body>
+</soapenv:Envelope>
+</Operation>
+</Sequence>

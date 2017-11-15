@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
+import net.sf.json.JSONArray;
+
 public class Node {
 	
 	private int id; //节点编号，为了后续edge起始节点与结束节点进行标记使用
@@ -30,11 +32,11 @@ public class Node {
 	
 	private ArrayList<Condition> condition = new ArrayList<Condition>(); //参数约束的集合
 	
-	private String paraRelationC = ""; //参数关系约束
+	private JSONArray paraRelationC = null; //参数关系约束
 	
 	private String ipRegionC = ""; //区域约束
 	
-	private String invokeOpC = ""; //调用约束
+	private JSONArray invokeOpC = null; //调用约束
 	
 	private String preOpC = ""; //序列约束
 	
@@ -114,11 +116,11 @@ public class Node {
 		return name.hashCode();
 	}
 
-	public String getParaRelationC() {
+	public JSONArray getParaRelationC() {
 		return paraRelationC;
 	}
 
-	public void setParaRelationC(String paraRelationC) {
+	public void setParaRelationC(JSONArray paraRelationC) {
 		this.paraRelationC = paraRelationC;
 	}
 
@@ -130,11 +132,11 @@ public class Node {
 		this.ipRegionC = ipRegionC;
 	}
 
-	public String getInvokeOpC() {
+	public JSONArray getInvokeOpC() {
 		return invokeOpC;
 	}
 
-	public void setInvokeOpC(String invokeOpC) {
+	public void setInvokeOpC(JSONArray invokeOpC) {
 		this.invokeOpC = invokeOpC;
 	}
 

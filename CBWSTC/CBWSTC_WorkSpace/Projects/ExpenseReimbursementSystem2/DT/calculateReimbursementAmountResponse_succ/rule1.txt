@@ -1,0 +1,2 @@
+(= calculateReimbursementAmount_?_stafflevel "seniormanager")
+(>= calculateReimbursementAmount_?_actualmonthlymileage 0) && (<= calculateReimbursementAmount_?_actualmonthlymileage 3000)

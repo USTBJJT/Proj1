@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -44,10 +47,13 @@ public class ScriptToFrame {
 	private Graph g = new Graph();
 	private ArrayList<TeatSequence> tss  = new ArrayList<TeatSequence>();
 	
-	private static ArrayList<String> paramRangeC = new ArrayList<String>();
-	private static ArrayList<String> sequenceC = new ArrayList<String>();
-	private static ArrayList<String> callC = new ArrayList<String>();
-	private static ArrayList<String> paramRelationC = new ArrayList<String>();
+	private static HashMap<String,String> eTimeC = new HashMap<String,String>();
+	private static HashMap<String,String> paramRangeC = new HashMap<String,String>();
+	private static HashMap<String,String> sequenceC = new HashMap<String,String>();
+	private static HashMap<String,String> callC = new HashMap<String,String>();
+	private static HashMap<String,String> paramRelationC = new HashMap<String,String>();
+	private static HashMap<String,String> invokeC = new HashMap<String,String>();
+	private static HashMap<String,String> ipRangeC = new HashMap<String,String>();
 	
 	public ScriptToFrame(String uri, Graph g, ArrayList<TeatSequence> tss) {
 		this.uri = uri;
@@ -87,7 +93,7 @@ public class ScriptToFrame {
 //			callC.clear();
 //			paramRelationC.clear();
 			for(int i=0;i<dfilePathN.size();i++) {
-				if(uri.equals("http://localhost:8080/axis2/services/ParkingFeeCalculator?wsdl")) {
+				if(uri.contains("ParkingFeeCalculator")) {
 					InitExperiment init = new InitExperiment();
 					init.init();
 				}
@@ -135,45 +141,76 @@ public class ScriptToFrame {
 //		      elm.asXML();//包括该elm的标签
 		      Element elmEnvelope = elm.element("Envelope");
 		      Element body = elmEnvelope.element("Body").element(opName);
-		      if(validateXMLSchema(body.asXML())) {
+		      if(validateXMLSchema(body.asXML())) { //输入符合XSD规格
 		    	  String soapReturn = si.sendSoap(opName,elmEnvelope.asXML());
-		    	  boolean flag = findSoapReturn(soapReturn);
-		    	  if(flag) {
+		    	  int flag = findSoapReturn(soapReturn);
+		    	  if(flag == 0) { //输入符合XSD规格
 		    		  sequence = sequence + opName + opName + "Response_succ";
 		    		  testResult = testResult + soapReturn  + "\r\n";
+		    	  }else if(flag == 1){ //No such method
+		    		  testResult = testResult + soapReturn  + "\r\nError: The Service Implementation does not match the Description, No such method: " + opName + "\r\n";
+		    		  String errorLog = "Error: The Service Implementation does not match the Description, No such method: " + opName; 
+		    		  System.out.println(tc + " Error: The Service Implementation does not match the Description, No such method: " + opName);
+		    		  eTimeC.put(tc,errorLog);
+		    		  break;
 		    	  }else {
-		    		  //TODO 违反了序列约束、调用约束、参数关系约束三个约束的问题 进一步判断
+		    		  //TODO 违反了区域约束、序列约束(顺序及重复调用)、调用约束、参数关系约束四个约束的问题 进一步判断
 		    		  //判断是否违反了调用约束
 		    		  Node gnode = g.getNode(opName);
+		    		  if(!assertIp(gnode.getIpRegionC())) { //区域约束
+		    			  testResult = testResult + soapReturn + "\r\nError: Violating the Ip Region Constraint when calling " + opName + " operation\r\n";
+	    				  String errorLog = "Error: Violating the Ip Region Constraint when calling " + opName + " operation";
+	    				  System.out.println(tc + " Error: Violating the Ip Region Constraint when calling " + opName + " operation");
+	    				  ipRangeC.put(tc,errorLog);
+	    				  break;
+		    		  }
 		    		  if(!gnode.getIterationC()) {// 有重复调用约束
 		    			  String rule = gnode.getName() + "Response_succ#ef#" + gnode.getName();
 		    			  if(ts.contains(rule)) {
 		    				  testResult = testResult + soapReturn + "\r\nError: Violating the Repeating Calls Constraint when calling " + opName + " operation\r\n";
+		    				  String errorLog = "Error: Violating the Repeating Calls Constraint when calling " + opName + " operation";
 		    				  System.out.println(tc + " Error: Violating the Repeating Calls Constraint when calling " + opName + " operation");
-		    				  callC.add(tc);
+		    				  callC.put(tc,errorLog);
 		    				  break;
 		    			  }
 		    		  }
-		    		  if(! gnode.getPreOpC().equals("NullConstraint")){// 有序列约束
+		    		  if(! gnode.getPreOpC().equals("NullConstraint")){ // 有序列约束
 		    			  String regEx = gnode.getPreOpC();
 		    			  RexpMatching rem = new RexpMatching();
 		    			  if(! rem.check(sequence, regEx)) {
 		    				  testResult = testResult + soapReturn + "\r\nError: Violating the Sequence Constraint when calling " + opName + " operation\r\n";
+		    				  String errorLog = "Error: Violating the Sequence Constraint when calling " + opName + " operation";
 		    				  System.out.println(tc + " Error: Violating the Sequence Constraint when calling " + opName + " operation");
-		    				  sequenceC.add(tc);
+		    				  sequenceC.put(tc,errorLog);
 		    				  break;
 		    			  }
 		    		  }
-		    		  testResult = testResult + soapReturn + "\r\nError: Violating the Parameter Relation Constraint when calling " + opName + " operation\r\n";
-		    		  System.out.println(tc + " Error: Violating the Parameter Relation Constraint when calling " + opName + " operation");
-		    		  paramRelationC.add(tc);
-		    		  break;
+		    		  if(gnode.getParaRelationC() != null && gnode.getParaRelationC().size() != 0) { // 有参数关系约束
+		    			  testResult = testResult + soapReturn + "\r\nError: Violating the Parameter Relation Constraint when calling " + opName + " operation\r\n";
+		    			  String errorLog = "Error: Violating the Parameter Relation Constraint when calling " + opName + " operation";
+		    			  System.out.println(tc + " Error: Violating the Parameter Relation Constraint when calling " + opName + " operation");
+		    			  paramRelationC.put(tc,errorLog);
+		    			  break;
+		    		  }
+		    		  if(gnode.getInvokeOpC() != null && gnode.getInvokeOpC().size() !=0) { //调用约束
+		    			  testResult = testResult + soapReturn + "\r\nError: Violating the Invoke Constraint when calling " + opName + " operation\r\n";
+		    			  String errorLog = "Error: Violating the Invoke Constraint when calling " + opName + " operation";
+		    			  System.out.println(tc + " Error: Violating the Invoke Constraint when calling " + opName + " operation");
+		    			  invokeC.put(tc,errorLog);
+		    			  break;
+		    		  }
+		    		  
+		    		  testResult = testResult + soapReturn + "\r\nError: Unknown error when invoke " + opName + " operation\r\n";
+	    			  System.out.println(tc + " Error: Unknown error when invoke " + opName + " operation");
+	    			  break;
+		    		  
 		    	  }
 		      }else {
 		    	  testResult = testResult  + "Error: Violating the Parameter Range Constraint when calling " + opName + " operation\r\n";
 //		    	  paramRangeC.add(tc);
+		    	  String errorLog = "Error: Violating the parameter range constraint when calling " + opName + " operation";
 		    	  System.out.println(tc + " Error: Violating the parameter range constraint when calling " + opName + " operation");
-		    	  paramRangeC.add(tc);
+		    	  paramRangeC.put(tc,errorLog);
 		    	  break;
 		    	  //TDOD 违反了参数约束，后续需要进行提醒
 		      }
@@ -224,7 +261,8 @@ public class ScriptToFrame {
 	 * @param soapResult
 	 * @return
 	 */
-	public boolean findSoapReturn(String soapResult) { //原来的public String findSoapReturn(String soapResult)
+	public int findSoapReturn(String soapResult) { //原来的public String findSoapReturn(String soapResult)
+		int flag = 0;
 //		String body = "";
 //		try {
 //			Document document = DocumentHelper.parseText(soapResult);
@@ -237,11 +275,14 @@ public class ScriptToFrame {
 //			e.printStackTrace();
 //		}
 //		return body;
-		
-		if(soapResult.contains("soapenv:Fault") || soapResult.contains("faultcode") ||soapResult.contains("faultstring")) {
-			return false;
+		if(soapResult.contains("No such method") && soapResult.contains("soapenv:Server")) {
+			flag = 1; //服务提供的操作被移除
+			return flag;
+		}else if(soapResult.contains("soapenv:Fault") && soapResult.contains("faultcode") && soapResult.contains("faultstring")) {
+			flag = 2; //服务执行出错
+			return flag;
 		}else {
-			return true;
+			return flag;
 		}
 	}
 	
@@ -265,12 +306,83 @@ public class ScriptToFrame {
 		}
 	}
 	
+	public HashMap<String,String> geteTimeC() {
+		return eTimeC;
+	}
+	
+	public HashMap<String,String> getparamRangeC() {
+		return paramRangeC;
+	}
+	
+	public HashMap<String,String> getsequenceC() {
+		return sequenceC;
+	}
+	
+	public HashMap<String,String> getcallC() {
+		return callC;
+	}
+	
+	public HashMap<String,String> getparamRelationC() {
+		return paramRelationC;
+	}
+	
+	public HashMap<String,String> getinvokeC() {
+		return invokeC;
+	}
+	
+	public HashMap<String,String> getipRangeC() {
+		return ipRangeC;
+	}
+	
 	public void getArray() {
 		
+		System.out.println("eTimeC: " + eTimeC.size());
 		System.out.println("paramRangeC: " + paramRangeC.size());
 		System.out.println("sequenceC: " + sequenceC.size());
 		System.out.println("callC: " + callC.size());
 		System.out.println("paramRelationC: " + paramRelationC.size());
+		System.out.println("invokeC: " + invokeC.size());
 	}
+	
+	private boolean assertIp(String ipSection) {
+		if(ipSection.equals("NullConstraint")) {
+			return true;
+		}
+		ipSection = ipSection.trim();
+
+        String ip = "";
+		try {
+			ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+       int idx = ipSection.indexOf('-');
+
+        String beginIP = ipSection.substring(0, idx);
+
+        String endIP = ipSection.substring(idx + 1);
+
+       return getIp2long(beginIP)<=getIp2long(ip) &&getIp2long(ip)<=getIp2long(endIP);
+	}
+	
+	private static long getIp2long(String ip) {
+
+        ip = ip.trim();
+
+        String[] ips = ip.split("\\.");
+
+       long ip2long = 0L;
+
+       for (int i = 0; i < 4; ++i) {
+
+            ip2long = ip2long << 8 | Integer.parseInt(ips[i]);
+
+        }
+
+       return ip2long;
+
+    }
 
 }

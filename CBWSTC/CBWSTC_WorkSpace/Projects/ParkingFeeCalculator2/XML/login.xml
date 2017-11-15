@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:login>
+         <!--anonymous type-->
+         <pfc:License>?</pfc:License>
+         <!--anonymous type-->
+         <pfc:loginTime>?</pfc:loginTime>
+      </pfc:login>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,42 @@
+digraph G{
+graph[fontname="Microsoft YaHei"]
+	subgraph cluster_g{
+		label=<ExpenseReimbursementSystem Model (2018-01-31)>;
+		node[shape=record,fontname="Microsoft YaHei"];
+		edge[fontname="Microsoft YaHei"];
+		n0[label="n0",shape=circle];
+		n1[label="n1",shape=circle];
+		n2[label="n2",shape=circle];
+		n3[label="n3",shape=circle];
+		n4[label="n4",shape=circle];
+		n5[label="n5",shape=circle];
+		n6[label="n6",shape=circle];
+		n7[label="n7",shape=circle];
+		n8[label="n8",shape=circle];
+		n9[label="n9",shape=circle];
+		n10[label="n10",shape=circle];
+		n11[label="n11",shape=circle];
+		n0->n1[label="e0"];
+		n1->n2[label="e1"];
+		n1->n5[label="e2"];
+		n1->n8[label="e3"];
+		n2->n3[label="e4"];
+		n2->n4[label="e5"];
+		n3->n2[label="e6"];
+		n3->n11[label="e7"];
+		n4->n11[label="e8"];
+		n5->n6[label="e9"];
+		n5->n7[label="e10"];
+		n6->n5[label="e11"];
+		n6->n11[label="e12"];
+		n7->n11[label="e13"];
+		n8->n9[label="e14"];
+		n8->n10[label="e15"];
+		n9->n8[label="e16"];
+		n9->n11[label="e17"];
+		n10->n11[label="e18"];
+	}
+	subgraph cluster_c{
+		Cons[shape=record,label="{Node Condition|n0\nname: Start\n|n1\nname: Init\n|n2\nname: totalAmount\n|n3\nname: totalAmountResponse_succ\n|n4\nname: totalAmountResponse_fail\n|n5\nname: calculateReimbursementAmount\n|n6\nname: calculateReimbursementAmountResponse_succ\n|n7\nname: calculateReimbursementAmountResponse_fail\n|n8\nname: airfareReimbursement\n|n9\nname: airfareReimbursementResponse_succ\n|n10\nname: airfareReimbursementResponse_fail\n|n11\nname: End\n}"];
+	}
+}

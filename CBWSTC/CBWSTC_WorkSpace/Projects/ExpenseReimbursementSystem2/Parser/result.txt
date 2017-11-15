@@ -1,0 +1,4 @@
+ExpenseReimbursementSystem2#{"eTime":"2018-01-31"}
+totalAmount#totalAmount#totalAmountResponse#{"paraRelation":[],"ipRegion":"","invokeOp":["calculateReimbursementAmount","airfareReimbursement"],"preOp":"","Iteration":"true"}
+calculateReimbursementAmount#calculateReimbursementAmount#calculateReimbursementAmountResponse#{"paraRelation":[],"ipRegion":"202.204.62.0-202.204.62.255","invokeOp":[],"preOp":"","Iteration":"true"}
+airfareReimbursement#airfareReimbursement#airfareReimbursementResponse#{"paraRelation":[],"ipRegion":"202.204.62.0-202.204.62.255","invokeOp":[],"preOp":"","Iteration":"true"}

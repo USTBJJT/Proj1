@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pfc:feeCalculate>
+         <!--anonymous type-->
+         <pfc:License>?</pfc:License>
+         <!--anonymous type - enumeration: [0,1,2]-->
+         <pfc:type>?</pfc:type>
+         <!--anonymous type-->
+         <pfc:timeout>?</pfc:timeout>
+         <!--type: boolean-->
+         <pfc:dayOfWeek>?</pfc:dayOfWeek>
+         <!--type: boolean-->
+         <pfc:discountCoupon>?</pfc:discountCoupon>
+      </pfc:feeCalculate>
+   </soapenv:Body>
+</soapenv:Envelope>

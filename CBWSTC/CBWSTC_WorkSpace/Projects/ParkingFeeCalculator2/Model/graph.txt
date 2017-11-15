@@ -1,0 +1,23 @@
+nodes.size()9
+0 Start initial null  null  false
+1 Init initial null  null  false
+2 login input login_?_License#String login_?_loginTime#int null NullConstraint null NullConstraint false
+3 loginResponse_succ output null  null  false
+4 loginResponse_fail output null  null  false
+5 feeCalculate input feeCalculate_?_License#String feeCalculate_?_type#int feeCalculate_?_timeout#int feeCalculate_?_dayOfWeek#boolean feeCalculate_?_discountCoupon#boolean ["feeCalculateRequest_License = loginRequest_License","feeCalculateRequest_timeout >= loginRequest_loginTime"] NullConstraint null ((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ) false
+6 feeCalculateResponse_succ output null  null  false
+7 feeCalculateResponse_fail output null  null  false
+8 End end null  null  false
+edges.size()12
+e0 0 1
+e1 1 2
+e2 2 3
+e3 2 4
+e4 3 8
+e5 3 5
+e6 4 8
+e7 5 6
+e8 5 7
+e9 6 8
+e10 6 2
+e11 7 8
