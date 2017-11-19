@@ -1,0 +1,471 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="generator" content="Railroad Diagram Generator 1.48.1593"><style type="text/css" xml:space="preserve">
+    ::-moz-selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }
+    ::selection
+    {
+      color: #FFFCF0;
+      background: #0F0C00;
+    }      
+    .ebnf a
+    {
+      text-decoration: none;
+    }
+    .ebnf a:hover
+    {
+      color: #050400;
+      text-decoration: underline;
+    }    
+    .signature
+    {
+      color: #806600;
+      font-size: 11px;
+      text-align: right;
+    }
+    body
+    {
+      font: normal 12px Verdana, sans-serif;
+      color: #0F0C00;
+      background: #FFFCF0;
+    }
+    a:link, a:visited
+    {
+      color: #0F0C00;
+    }
+    a:link.signature, a:visited.signature
+    {
+      color: #806600;
+    }
+    a.button, #tabs li a
+    {
+      padding: 0.25em 0.5em;
+      border: 1px solid #806600;
+      background: #F1E8C6;
+      color: #806600;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.button:hover, #tabs li a:hover
+    {
+      color: #050400;
+      background: #FFF6D1;
+      border-color: #050400;       
+    }     
+    #tabs
+    {
+      padding: 3px 10px;
+      margin-left: 0;
+      margin-top: 58px;
+      border-bottom: 1px solid #0F0C00;
+    }  
+    #tabs li
+    {
+      list-style: none;
+      margin-left: 5px;
+      display: inline;
+    }
+    #tabs li a
+    {     
+      border-bottom: 1px solid #0F0C00;
+    }
+    #tabs li a.active
+    {
+      color: #0F0C00;
+      background: #FFFCF0;
+      border-color: #0F0C00;
+      border-bottom: 1px solid #FFFCF0;
+      outline: none;
+    }
+    #divs div
+    {
+      display: none;
+      overflow:auto;
+    }
+    #divs div.active
+    {
+      display: block;
+    }
+    #text
+    {
+      border-color: #806600;
+      background: #FFFEFA;
+      color: #050400;
+    }
+    .small
+    {
+      vertical-align: top;
+      text-align: right;
+      font-size: 9px;
+      font-weight: normal;
+      line-height: 120%;
+    }
+    td.small
+    {
+      padding-top: 0px;
+    }
+    .hidden
+    {
+      visibility: hidden;
+    }
+    td:hover .hidden 
+    {
+      visibility: visible;
+    }
+    div.download
+    {
+      display: none;
+      background: #FFFCF0;
+      position: absolute;
+      right: 34px;
+      top: 94px;
+      padding: 10px;
+      border: 1px dotted #0F0C00;
+    }
+    #divs div.ebnf, div.ebnf
+    {
+      display: block;
+      padding-left: 16px;
+      padding-top: 2px; 
+      padding-bottom: 2px; 
+      background: #FFF6D1;
+    }
+    tr.option-line td:first-child
+    {
+      text-align: right
+    }
+    tr.option-text td
+    {
+      padding-bottom: 10px
+    }
+    table.palette
+    {
+      border-top: 1px solid #050400;
+      border-right: 1px solid #050400;
+      margin-bottom: 4px
+    }
+    td.palette
+    {
+      border-bottom: 1px solid #050400;
+      border-left: 1px solid #050400;
+    }
+    a.palette
+    {
+      padding: 2px 3px 2px 10px;
+      text-decoration: none;
+    }
+    .palette
+    {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      -ms-user-select: none;
+    }
+  </style></head>
+   <body>
+      
+      <p style="font-size: 14px; font-weight:bold"><a name="Constrain">Constrain:</a></p>
+      <img border="0" src="diagram/Constrain.png" height="212" width="1254" usemap="#Constrain.map"><map name="Constrain.map">
+         <area shape="rect" coords="185,67,251,99" href="#ValuePR" title="ValuePR">
+         <area shape="rect" coords="429,67,493,99" href="#ValueIR" title="ValueIR">
+         <area shape="rect" coords="677,67,743,99" href="#ValueIO" title="ValueIO">
+         <area shape="rect" coords="905,67,973,99" href="#ValuePO" title="ValuePO">
+         <area shape="rect" coords="1155,67,1211,99" href="#ValueI" title="ValueI">
+         <area shape="rect" coords="141,111,195,143" href="#eDate" title="eDate"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#Constrain" title="Constrain" shape="rect">Constrain</a>
+         ::= '{' ( '"paraRelation":' <a href="#ValuePR" title="ValuePR" shape="rect">ValuePR</a> ',' '"ipRegion":' <a href="#ValueIR" title="ValueIR" shape="rect">ValueIR</a> ',' '"invokeOp":' <a href="#ValueIO" title="ValueIO" shape="rect">ValueIO</a> ',' '"preOp":' <a href="#ValuePO" title="ValuePO" shape="rect">ValuePO</a> ',' '"Iteration":' <a href="#ValueI" title="ValueI" shape="rect">ValueI</a> | '"eTime":' <a href="#eDate" title="eDate" shape="rect">eDate</a> ) '}'</pre></div>
+         
+      </p>
+      
+      <p>no references</p><br><p style="font-size: 14px; font-weight:bold"><a name="ValuePR">ValuePR:</a></p>
+      <img border="0" src="diagram/ValuePR.png" height="96" width="324" usemap="#ValuePR.map"><map name="ValuePR.map">
+         <area shape="rect" coords="115,45,209,77" href="#ParaRelation" title="ParaRelation"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ValuePR" title="ValuePR" shape="rect">ValuePR</a>  ::= '[' ( <a href="#ParaRelation" title="ParaRelation" shape="rect">ParaRelation</a> ( ',' <a href="#ParaRelation" title="ParaRelation" shape="rect">ParaRelation</a> )* )? ']'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="ParaRelation">ParaRelation:</a></p>
+      <img border="0" src="diagram/ParaRelation.png" height="36" width="770" usemap="#ParaRelation.map"><map name="ParaRelation.map">
+         <area shape="rect" coords="75,1,147,33" href="#OpName" title="OpName">
+         <area shape="rect" coords="211,1,309,33" href="#OpParameter" title="OpParameter">
+         <area shape="rect" coords="329,1,441,33" href="#RelationSymbol" title="RelationSymbol">
+         <area shape="rect" coords="461,1,533,33" href="#OpName" title="OpName">
+         <area shape="rect" coords="597,1,695,33" href="#OpParameter" title="OpParameter"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ParaRelation" title="ParaRelation" shape="rect">ParaRelation</a>
+         ::= '"' <a href="#OpName" title="OpName" shape="rect">OpName</a> '.' <a href="#OpParameter" title="OpParameter" shape="rect">OpParameter</a> <a href="#RelationSymbol" title="RelationSymbol" shape="rect">RelationSymbol</a> <a href="#OpName" title="OpName" shape="rect">OpName</a> '.' <a href="#OpParameter" title="OpParameter" shape="rect">OpParameter</a> '"'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#ValuePR" title="ValuePR">ValuePR</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="RelationSymbol">RelationSymbol:</a></p>
+      <img border="0" src="diagram/RelationSymbol.png" height="256" width="138">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#RelationSymbol" title="RelationSymbol" shape="rect">RelationSymbol</a>
+         ::= '='
+           | '&gt;'
+           | '&lt;'
+           | '&gt;='
+           | '&lt;='
+           | '!='</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#ParaRelation" title="ParaRelation">ParaRelation</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="ValueIR">ValueIR:</a></p>
+      <img border="0" src="diagram/ValueIR.png" height="36" width="356" usemap="#ValueIR.map"><map name="ValueIR.map">
+         <area shape="rect" coords="75,1,145,33" href="#IpAdress" title="IpAdress">
+         <area shape="rect" coords="211,1,281,33" href="#IpAdress" title="IpAdress"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ValueIR" title="ValueIR" shape="rect">ValueIR</a>  ::= '"' <a href="#IpAdress" title="IpAdress" shape="rect">IpAdress</a> '-' <a href="#IpAdress" title="IpAdress" shape="rect">IpAdress</a> '"'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="IpAdress">IpAdress:</a></p>
+      <img border="0" src="diagram/IpAdress.png" height="36" width="482" usemap="#IpAdress.map"><map name="IpAdress.map">
+         <area shape="rect" coords="29,1,87,33" href="#IpField" title="IpField">
+         <area shape="rect" coords="151,1,209,33" href="#IpField" title="IpField">
+         <area shape="rect" coords="273,1,331,33" href="#IpField" title="IpField">
+         <area shape="rect" coords="395,1,453,33" href="#IpField" title="IpField"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#IpAdress" title="IpAdress" shape="rect">IpAdress</a> ::= <a href="#IpField" title="IpField" shape="rect">IpField</a> '.' <a href="#IpField" title="IpField" shape="rect">IpField</a> '.' <a href="#IpField" title="IpField" shape="rect">IpField</a> '.' <a href="#IpField" title="IpField" shape="rect">IpField</a></pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#ValueIR" title="ValueIR">ValueIR</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="IpField">IpField:</a></p>
+      <img border="0" src="diagram/IpField.png" height="200" width="330">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#IpField" title="IpField" shape="rect">IpField</a>  ::= '25' [0-5]
+           | ( '2' [0-4] | '1' [0-9] | [1-9] )? [0-9]</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#IpAdress" title="IpAdress">IpAdress</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="ValueIO">ValueIO:</a></p>
+      <img border="0" src="diagram/ValueIO.png" height="96" width="394" usemap="#ValueIO.map"><map name="ValueIO.map">
+         <area shape="rect" coords="161,45,233,77" href="#OpName" title="OpName"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ValueIO" title="ValueIO" shape="rect">ValueIO</a>  ::= '[' ( '"' <a href="#OpName" title="OpName" shape="rect">OpName</a> '"' ( ',' '"' <a href="#OpName" title="OpName" shape="rect">OpName</a> '"' )* )? ']'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="OpName">OpName:</a></p>
+      <img border="0" src="diagram/OpName.png" height="378" width="282">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#OpName" title="OpName" shape="rect">OpName</a>   ::= [A-Za-z_$] [A-Za-z0-9_$]*</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Exp" title="Exp">Exp</a></li>
+            
+            <li><a href="#ParaRelation" title="ParaRelation">ParaRelation</a></li>
+            
+            <li><a href="#ValueIO" title="ValueIO">ValueIO</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="OpParameter">OpParameter:</a></p>
+      <img border="0" src="diagram/OpParameter.png" height="378" width="282">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#OpParameter" title="OpParameter" shape="rect">OpParameter</a>
+         ::= [A-Za-z_$] [A-Za-z0-9_$]*</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#ParaRelation" title="ParaRelation">ParaRelation</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="ValuePO">ValuePO:</a></p>
+      <img border="0" src="diagram/ValuePO.png" height="36" width="192" usemap="#ValuePO.map"><map name="ValuePO.map">
+         <area shape="rect" coords="75,1,117,33" href="#Exp" title="Exp"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ValuePO" title="ValuePO" shape="rect">ValuePO</a>  ::= '"' <a href="#Exp" title="Exp" shape="rect">Exp</a> '"'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="Exp">Exp:</a></p>
+      <img border="0" src="diagram/Exp.png" height="200" width="586" usemap="#Exp.map"><map name="Exp.map">
+         <area shape="rect" coords="135,17,177,49" href="#Exp" title="Exp">
+         <area shape="rect" coords="275,105,317,137" href="#Exp" title="Exp">
+         <area shape="rect" coords="135,149,207,181" href="#OpName" title="OpName">
+         <area shape="rect" coords="279,149,351,181" href="#OpName" title="OpName"></map>
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#Exp" title="Exp" shape="rect">Exp</a>      ::= ( '(' ( <a href="#Exp" title="Exp" shape="rect">Exp</a> ( ')*' | ')+' | ')|(' <a href="#Exp" title="Exp" shape="rect">Exp</a> ')' ) | <a href="#OpName" title="OpName" shape="rect">OpName</a> ')(' <a href="#OpName" title="OpName" shape="rect">OpName</a> 'Response_succ)' ) )*</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Exp" title="Exp">Exp</a></li>
+            
+            <li><a href="#ValuePO" title="ValuePO">ValuePO</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="ValueI">ValueI:</a></p>
+      <img border="0" src="diagram/ValueI.png" height="80" width="164">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#ValueI" title="ValueI" shape="rect">ValueI</a>   ::= '"true"'
+           | '"false"'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><p style="font-size: 14px; font-weight:bold"><a name="eDate">eDate:</a></p>
+      <img border="0" src="diagram/eDate.png" height="36" width="520">
+      
+      <p>
+         
+         <div class="ebnf"><pre><a href="#eDate" title="eDate" shape="rect">eDate</a>    ::= '"' 'the value of Date Class whose Format is yyyy-MM-dd' '"'</pre></div>
+         
+      </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#Constrain" title="Constrain">Constrain</a></li>
+            
+         </ul>
+         
+      </p><br><hr>
+      
+      <p>
+         
+         <table border="0" class="signature">
+            
+            <tr>
+               
+               <td style="width: 100%">&nbsp;</td>
+               
+               <td valign="top">
+                  
+                  <nobr class="signature">... generated by <a name="Railroad-Diagram-Generator" class="signature" title="http://www.bottlecaps.de/rr/ui" href="http://www.bottlecaps.de/rr/ui" target="_blank">Railroad Diagram Generator</a></nobr>
+                  
+               </td>
+               
+               <td><a name="Railroad-Diagram-Generator" title="http://www.bottlecaps.de/rr/ui" href="http://www.bottlecaps.de/rr/ui" target="_blank">
+                     <img border="0" src="diagram/rr-1.48.1593.png" height="16" width="16"></a></td>
+               
+            </tr>
+            
+         </table>
+         
+      </p>
+      
+   </body>
+</html>

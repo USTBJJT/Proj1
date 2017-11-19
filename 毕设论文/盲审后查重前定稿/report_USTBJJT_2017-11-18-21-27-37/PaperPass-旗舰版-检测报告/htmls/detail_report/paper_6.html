@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>PaperPass 最权威论文抄袭检测系统</title>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <div class="text-center PT30">
+        <ul class="pagination"><li><a href="paper_1.html"><span>首页</span></a></li>
+    <li><a href="paper_5.html"><span>上一页</span></a></li>
+    <li><a href="paper_7.html"><span>下一页</span></a></li>
+    <li><a href="paper_11.html"><span>尾页</span></a></li></ul>
+    <div class="ML15 inline-block v-top MT10">
+            页码
+            <span class="g-font-color green">6</span>/<span>11</span>
+            页
+        </div>    </div>
+    <div class="paper-txt P30 PB0">
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="201">201</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">表3-6 login操作决策表</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="202">202</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">下面根据例3-1及表3-6，描述一个测试数据的生成过程。</span> <span class="g-font-color green">针对测试序列Strate0Inite1logine3loginResponse_fail，遍历该序列，对该序列中的节点进行如下处理：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="203">203</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">请求节点：</span> <span class="g-font-color green">对于节点类型为 Req的请求节点，从 Web行为模型中获取该节点约束，解析其输入参数名称及类型，</span> <span class="g-font-color green">转换为符合 Z3脚本的 declare- const命令，进行变量定义。</span> <span class="g-font-color green">针对login节点，解析Web行为模型中login节点约束，其输入参数为String类型的License及Int类型的loginTime。</span> <span class="g-font-color green">转换为符合declare-const变量定义脚本为：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="204">204</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">(declare-const login_1_License String)</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="205">205</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">(declare-const login_1_loginTime Int)</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="206">206</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">响应节点：</span> <span class="g-font-color green">对于节点类型为 Res的响应节点，解析该节点对应的操作决策表，选取执行事件与响应节点名称相同的规则，</span> <span class="g-font-color green">获取其规则中约束条件为真的集合，转换为符合 Z3 assert命令的脚本。</span> <span class="g-font-color green">针对loginResponse_fail节点，解析表3-6，可选取规则1，2或3。</span> <span class="g-font-color green">假设选取规则1，解析规则1中约束条件为真的集合，其Z3 assert命令的脚本为：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="207">207</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">( assert(= false( str. in. re login_1_ License( re.++( re.++</span> <span class="g-font-color green">( re.++( re.++( re.++( re.++( str. to. re”</span> <span class="g-font-color green"> BJ”)( re. range” A”” Y”))( re. range”0””9”)</span> <span class="g-font-color green">)( re. range”0””9”))( re. range”0””9”))(</span> <span class="g-font-color green"> re. range”0””9”))( re. range”0””9”)))))</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="208">208</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">(assert (]= login_1_loginTime 0))</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="209">209</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">(assert ([= login_1_loginTime 24))</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="210">210</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">序列遍历结束后，生成的 Z3求解脚本包括了待求解变量定及运算部分，</span> <span class="g-font-color green">还需向脚本中添加模型求解命令，判断是否有可行解并获取最后所求解数据。</span><a href='../sentence_detail/535.html' target='right' class='g-font-color orange'>针对该测试序列生成的测试数据求解脚本，及其求解结果如图3-20所示。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="211">211</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-20 测试数据求解脚本及结果示例</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="212">212</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-21 测试数据生成算法</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="213">213</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">本文在3.3.1小节覆盖准则中定义了状态覆盖（ State coverage）准则，</span> <span class="g-font-color green">若使用该覆盖准则，则需针对所有符合要求的规则生成测试数据，如针对 loginResponse_ fail节点，</span> <span class="g-font-color green">解析表3-6，需对规则1，2，3分别生成测试数据。</span> <span class="g-font-color green">即针对测试序列Strate0Inite1logine3loginResponse_fail，应生成三个测试用例。</span> <span class="g-font-color green">假设一个测试序列由 n个响应节点组成，每个响应节点 i具有 mi个对应规则，则针对该序列，</span> <span class="g-font-color green">应该生成小于等于 m1 m2 mn个测试数据（存在规则组合无可行解的情况）。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="214">214</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-21描述了测试数据自动生成算法。</span> <span class="g-font-color green">该算法首先遍历测试序列，获取全部类型为请求节点的节点集合（ReqNodeSet）与类型为响应节点的节点集合（ResNodeSet）。</span> <span class="g-font-color green">针对响应节点集合，从决策表中获取执行相关响应的所有可能的规则组合集合（RCSet）。</span> <span class="g-font-color green">若使用状态覆盖准则（State coverage=true），则针对每个规则组合进行测试序列数据求解；</span> <span class="g-font-color green">若未使用该覆盖准则，则针对该序列，求出一种规则组合下的可行解即可。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="215">215</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/549.html' target='right' class='g-font-color red'>基于测试序列及测试数据的测试用例生成</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="216">216</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/550.html' target='right' class='g-font-color orange'>生成测试数据后，需要考虑如何将测试数据与测试序列结合，生成可执行的测试用例。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="217">217</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">本文使用XML Format定义测试用例，其语法如图3-22所示。</span> <span class="g-font-color green">其中根节点为[Sequence]标签，用来标识测试用例；</span> <span class="g-font-color green">[ Operation]标签标识被调用操作， name属性代表被调用操作名称， id属性代表操作被调用次数，[ Sequence]标签中可包含多个[ Operation]标签，</span> <span class="g-font-color green">[ Operation]标签的前后顺序即为服务调用的先后顺序；</span> <span class="g-font-color green">[Operation]标签内包含调用该服务需要发送的SOAP消息，[Body]标签内包含消息所需测试数据。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="218">218</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-22 测试用例框架</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="219">219</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/557.html' target='right' class='g-font-color orange'>定义完测试用例格式后，本文考虑如何将测试数据与测试用例进行结合。</a> <span class="g-font-color green">在前面的技术框架图论述中本文使用 Z3求解器求解出的测试数据填充到 EX- WSDL分析阶段生成的 SOAP消息中，</span><a href='../sentence_detail/559.html' target='right' class='g-font-color orange'>将填充后的消息与生成的测试序列合成可执行的测试用例。</a> <span class="g-font-color green">如图3-23所示，测试用例从数据层、消息层、序列层三个层次进行生成：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="220">220</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">基于约束求解生成测试数据；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="221">221</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">将测试数据填充到EX-WSDL分析阶段生成的相应SOAP消息框架中，生成单个操作测试消息；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="222">222</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/563.html' target='right' class='g-font-color orange'>按照测试序列，将测试消息进行组合后，生成最终的测试用例。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="223">223</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-23 测试用例生成框架</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="224">224</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">针对测试序列Strate0Inite1logine3loginResponse_fail与图3-20生成的可行解，可生成最后的测试用例如图3-24所示。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="225">225</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-24 测试用例示例</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="226">226</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">测试执行与结果判定</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="227">227</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">本文集成SoapUI开源工具模拟客户端，并通过HTTP进行数据传输，将SOAP请求发送到该服务所在的服务器进行测试用例的执行。</span> <span class="g-font-color green">测试与监控服务的运行以及对服务操作的调用是否符合约束条件进行判断，针对执行错误的测试用例，尝试定位违反约束的类型。</span> <span class="g-font-color green">因此本文定义了约束校验优先级，限定了服务调用失败后，约束判定的先后顺序。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="228">228</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">如表3-7所示，约束校验优先级分为P1-P7，编号越小，越优先进行判断。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="229">229</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">表3-7约束校验优先级</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="230">230</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/573.html' target='right' class='g-font-color orange'>测试执行及结果判定算法如图3-25所示。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="231">231</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">在上述算法中，首先解析测试用例tc中的调用请求消息集合（ReqMSet），针对该集合中的每个请求消息进行执行判定。</span> <span class="g-font-color green">根据约束校验优先级进行如下处理：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="232">232</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">如果请求消息不符合调用操作的 XML结构定义（ XSD）停止测试用例执行，记录该测试用例违反参数范围（ paraRestriction Constraint）约束（5-7），</span> <span class="g-font-color green">否则继续执行；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="233">233</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">获取执行后的响应消息，判断该消息是否符合调用操作的XML结构定义，若满足则对下一请求消息执行步骤1；</span> <span class="g-font-color green">否则执行步骤3-8进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="234">234</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">判断响应消息是否存在找不到服务提示，若存在服务可能存在由于更新或停止等问题导致操作被移除，</span><a href='../sentence_detail/581.html' target='right' class='g-font-color orange'>停止测试用例执行，记录该测试用例违反时效约束（12-15）；</a> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="235">235</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">判断客户端IP地址是否符合调用操作区域约束，若不在限定区域内，停止测试用例执行，记录该测试用例违反区域约束（16-19）；</span> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="236">236</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">如果调用操作存在重复调用约束，判断已经执行的操作序列是否存在重复调用，若存在，</span><a href='../sentence_detail/586.html' target='right' class='g-font-color orange'>则停止测试用例执行，记录该测试用例违反重复调用约束（20-23）；</a> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="237">237</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">判断调用该操作前的执行操作序列是否满足调用操作的顺序约束，若违反该约束，</span><a href='../sentence_detail/589.html' target='right' class='g-font-color orange'>停止测试用例执行，记录该测试用例违反顺序约束（24-27）；</a> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="238">238</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">判断请求消息中的参数关系是否满足调用操作的参数关系约束，若违反该约束，</span><a href='../sentence_detail/592.html' target='right' class='g-font-color orange'>停止测试用例执行，记录该测试用例违反顺序约束（28-31）；</a> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="239">239</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图3-25 测试结果判定算法</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="240">240</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">判断调用操作是否存在调用约束，若存在，停止测试用例执行，记录该测试用例可能违反调用约束（32-35）；</span> <span class="g-font-color green">否则进一步判断；</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="241">241</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">若并未违反本文定义的约束，则提示该测试用例可能违反未知约束（36）。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="242">242</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/598.html' target='right' class='g-font-color orange'>行为模型驱动的服务组合程序测试用例生成工具MDGen设计与实现</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="243">243</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">本章介绍行为模型驱动的服务组合程序测试用例生成技术支持工具MDGen的设计与实现，包括需求分析、工具设计与实现，最后用一个实例进行演示。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="244">244</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">需求分析</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="245">245</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">为了提高行为模型驱动的服务组合程序测试用例生成技术的自动化程度，本文开发了相应支持工具MDGen。</span><a href='../sentence_detail/602.html' target='right' class='g-font-color orange'>MDGen支持EX-WSDL解析、行为模型的生成、测试序列生成、测试用例生成、执行和测试结果验证。</a><a href='../sentence_detail/603.html' target='right' class='g-font-color orange'>采用UML用例图对MDGen进行需求分析，如图4-1所示。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="246">246</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">图4-1 MDGen用例图</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="247">247</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                <a href='../sentence_detail/605.html' target='right' class='g-font-color orange'>下面将对图4.1进行各个用例的具体描述。</a>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="248">248</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">待测程序选择：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="249">249</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">用户提供待测Web服务的EX-WSDL访问地址，系统根据地址获取EX-WSDL文档，并创建一系列所需工作目录。</span> <span class="g-font-color green">包括如下两个子用例：</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+        
+        <div class="paper-section" tpl-section="warp">
+            <span class="label-warning" tpl-section="badge" data-id="250">250</span>
+            <p class="MT20 text-idt25" tpl-section="text">
+                 <span class="g-font-color green">待测程序导入：</span> <span class="g-font-color green">用于待测服务的 EX- WSDL文档的导入，用户可提供该服务 EX- WSDL的 URI或者本地文档的绝对路径，</span> <span class="g-font-color green">工具将获取的文档导入到特定目录，以备后续相关操作。</span>            </p>
+            <div class="text-right">
+                <button type="button" tpl-section="btn" class="g-btn g-btn-default g-btn-sm MT10">段落修改</button>
+            </div>
+            <div tpl-section="box"></div>
+        </div>
+            </div>
+    <div class="text-center PB30">
+        <ul class="pagination"><li><a href="paper_1.html"><span>首页</span></a></li>
+    <li><a href="paper_5.html"><span>上一页</span></a></li>
+    <li><a href="paper_7.html"><span>下一页</span></a></li>
+    <li><a href="paper_11.html"><span>尾页</span></a></li></ul>
+    <div class="ML15 inline-block v-top MT10">
+            页码
+            <span class="g-font-color green">6</span>/<span>11</span>
+            页
+        </div>    </div>
+    <div class="paper-footer">
+        <p>检测报告由<a href="http://www.paperpass.com/" target="_black">PaperPass</a>文献相似度检测系统生成</p>
+        <p>Copyright © 2007-2017 PaperPass</p>
+    </div>
+</div>
+</body>
+<script type="text/html" template="section">
+    <div class="text-right">
+        <div class="modifyTxt-notice">
+            修改完本段落之后，点击“临时保存”，之后可在上方导航“修改文档”页面中查看修改后的内容
+        </div>
+        <textarea class="form-control resize-none" rows="4" tpl-section="textarea"></textarea>
+        <div class="button-wrap MT10">
+            <button type="button" class="g-btn g-btn-default g-btn-sm red" tpl-section-cancle="btn">取消保存</button>
+            <button type="button" class="g-btn g-btn-default g-btn-sm" tpl-section-save="btn">临时保存</button>
+        </div>
+    </div>
+</script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/Lib.js"></script>
+<script type="text/javascript">
+    Report.report_id = '5a1035495523b5zv4';
+</script>
+<script type="text/javascript">
+    (function(System,$){
+
+        var sectionEdit = System.Paper.sectionEdit();
+        var sectionSave = System.Paper.sectionSave(null);
+        $(function(){
+            $(document).on('click','[tpl-section=btn]',function(){
+                sectionEdit.call(this);
+            });
+            $(document).on('click','[tpl-section-save=btn]',function(){
+                sectionSave.call(this);
+
+            });
+            $(document).on('click','[tpl-section-cancle=btn]',function(){
+                var $warp = $(this).closest('[tpl-section="warp"]');
+                $warp.find('[tpl-section="box"]').html('');
+            });
+
+
+        });
+    })(Report,jQuery);
+
+</script>
+</html>

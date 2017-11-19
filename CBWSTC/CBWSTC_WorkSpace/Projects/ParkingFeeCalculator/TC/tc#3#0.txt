@@ -1,9 +1,9 @@
 <Sequence>
 <Operation name="login" id="1">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:login xmlns:pfc="http://pfc.simple.ws">
+      <pfc:login>
          <!--anonymous type-->
          <pfc:License>BJP44242</pfc:License>
          <!--anonymous type-->
@@ -13,10 +13,10 @@
 </soapenv:Envelope>
 </Operation>
 <Operation name="login">
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pfc="http://pfc.simple.ws">
    <soapenv:Header/>
    <soapenv:Body>
-      <pfc:login xmlns:pfc="http://pfc.simple.ws">
+      <pfc:login>
          <!--anonymous type-->
          <pfc:License>BJP44242</pfc:License>
          <!--anonymous type-->

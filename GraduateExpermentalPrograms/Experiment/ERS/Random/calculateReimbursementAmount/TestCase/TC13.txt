@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exp="http://exp.simple.ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exp:calculateReimbursementAmount>
+         <exp:stafflevel>seniormanager</exp:stafflevel>
+         <exp:actualmonthlymileage>19372</exp:actualmonthlymileage>
+      </exp:calculateReimbursementAmount>
+   </soapenv:Body>
+</soapenv:Envelope>

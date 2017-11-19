@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="ExpenseReimbursementSystem">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">ws.simple.exp.ExpenseReimbursementSystem</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="airfareReimbursement" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://exp.simple.ws">
+            <actionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/airfareReimbursementRequest</actionMapping>
+            <outputActionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/airfareReimbursementResponse</outputActionMapping>
+        </operation>
+        <operation name="calculateReimbursementAmount" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://exp.simple.ws">
+            <actionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/calculateReimbursementAmountRequest</actionMapping>
+            <outputActionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/calculateReimbursementAmountResponse</outputActionMapping>
+        </operation>
+        <operation name="totalAmount" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://exp.simple.ws">
+            <actionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/totalAmountRequest</actionMapping>
+            <outputActionMapping>http://exp.simple.ws/ExpenseReimbursementSystem/totalAmountResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

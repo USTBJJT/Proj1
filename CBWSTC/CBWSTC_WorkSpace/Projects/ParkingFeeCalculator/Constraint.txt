@@ -11,7 +11,7 @@
 (assert (>= (- feeCalculate_1_timeout login_0_loginTime) 0))
 (assert (< (- feeCalculate_1_timeout login_0_loginTime) 2))
 (assert (= feeCalculate_1_dayOfWeek false))
-(assert (= feeCalculate_1_discountCoupon false))
+(assert (= feeCalculate_1_discountCoupon true))
 (check-sat)
 (get-value (feeCalculate_1_License))
 (get-value (feeCalculate_1_type))

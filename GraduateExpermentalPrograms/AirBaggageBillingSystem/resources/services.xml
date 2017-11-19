@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="AirBaggageBillingSystem">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">ws.simple.abbs.AirBaggageBillingSystem</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="loginin" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://abbs.simple.ws">
+            <actionMapping>http://abbs.simple.ws/AirBaggageBillingSystem/logininRequest</actionMapping>
+            <outputActionMapping>http://abbs.simple.ws/AirBaggageBillingSystem/logininResponse</outputActionMapping>
+        </operation>
+        <operation name="feeCalculation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://abbs.simple.ws">
+            <actionMapping>http://abbs.simple.ws/AirBaggageBillingSystem/feeCalculationRequest</actionMapping>
+            <outputActionMapping>http://abbs.simple.ws/AirBaggageBillingSystem/feeCalculationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://pfc.simple.ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://pfc.simple.ws" xmlns:intf="http://pfc.simple.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://pfc.simple.ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="License">
+      	<simpleType>
+      		<restriction base="string">
+      			<pattern value="[B][J][A-Y][0-9]{5}"></pattern>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="loginTime">
+      	<simpleType>
+      		<restriction base="int">
+      			<minInclusive value="0"></minInclusive>
+      			<maxInclusive value="24"></maxInclusive>
+      		</restriction>
+      	</simpleType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculate">
+    <complexType>
+     <sequence>
+      <element name="License">
+      	<simpleType>
+      		<restriction base="string">
+      			<pattern value="[B][J][A-Y][0-9]{5}"></pattern>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="type">
+      	<simpleType>
+      		<restriction base="int">
+      			<enumeration value="0"></enumeration>
+      			<enumeration value="1"></enumeration>
+      			<enumeration value="2"></enumeration>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="timeout">
+      	<simpleType>
+      		<restriction base="int">
+
+      			<minInclusive value="0"></minInclusive>
+
+      			<maxInclusive value="24"></maxInclusive>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="dayOfWeek" type="xsd:boolean"/>
+      <element name="discountCoupon" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculateResponse">
+    <complexType>
+     <sequence>
+      <element name="feeCalculateReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="feeCalculateRequest">
+
+      <wsdl:part element="impl:feeCalculate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="feeCalculateResponse">
+
+      <wsdl:part element="impl:feeCalculateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ParkingFeeCalculator">
+
+      <wsdl:operation name="login">
+        <wsdl:documentation>
+			{"paraRelation":[],"ipRegion":"","invokeOp":[],"preOp":"","Iteration":"false"}
+		</wsdl:documentation>
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="feeCalculate">
+      
+      	<wsdl:documentation>
+			{"paraRelation":["feeCalculateRequest_License = loginRequest_License","feeCalculateRequest_timeout >= loginRequest_loginTime"],"ipRegion":"","invokeOp":[],"preOp":"((login)(loginResponse_succ)(feeCalculate)(feeCalculateResponse_succ))*(login)(loginResponse_succ)","Iteration":"false"}
+		</wsdl:documentation>
+
+         <wsdl:input message="impl:feeCalculateRequest" name="feeCalculateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:feeCalculateResponse" name="feeCalculateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ParkingFeeCalculatorSoapBinding" type="impl:ParkingFeeCalculator">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="feeCalculate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="feeCalculateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="feeCalculateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ParkingFeeCalculator">
+   
+   	  <wsdl:documentation>{"eTime":"2018-01-31"}</wsdl:documentation>
+
+      <wsdl:port binding="impl:ParkingFeeCalculatorSoapBinding" name="ParkingFeeCalculator">
+
+         <wsdlsoap:address location="http://localhost:8080/axis2/services/ParkingFeeCalculator"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

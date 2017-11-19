@@ -142,7 +142,9 @@ public class ScriptToFrame {
 		      Element elmEnvelope = elm.element("Envelope");
 		      Element body = elmEnvelope.element("Body").element(opName);
 		      if(validateXMLSchema(body.asXML())) { //输入符合XSD规格
+		    	  System.out.println(validateXMLSchema(body.asXML()));
 		    	  String soapReturn = si.sendSoap(opName,elmEnvelope.asXML());
+		    	  System.out.println(soapReturn);
 		    	  int flag = findSoapReturn(soapReturn);
 		    	  if(flag == 0) { //输入符合XSD规格
 		    		  sequence = sequence + opName + opName + "Response_succ";

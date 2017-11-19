@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns:calculateReimbursementAmountResponse xmlns:ns="http://exp.simple.ws">
+         <ns:return>759456.0</ns:return>
+      </ns:calculateReimbursementAmountResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

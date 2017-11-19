@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://abbs.simple.ws" xmlns:impl="http://abbs.simple.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:intf="http://abbs.simple.ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://abbs.simple.ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="loginin">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logininResponse">
+    <complexType>
+     <sequence>
+      <element name="logininReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculation">
+    <complexType>
+     <sequence>
+      <element name="chooseAirClass">
+      	<simpleType>
+      		<restriction base="int">
+
+      			<minInclusive value="0"/>
+      			<maxInclusive value="3"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="chooseArea">
+      	<simpleType>
+      		<restriction base="int">
+
+      			<minInclusive value="0"/>
+      			<maxInclusive value="1"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="isStudent" type="xsd:boolean"/>
+      <element name="luggage">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+      <element name="economicfee">
+      	<simpleType>
+      		<restriction base="double">
+
+      			<minInclusive value="0"/>
+      		</restriction>
+      	</simpleType>
+      </element>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="feeCalculationResponse">
+    <complexType>
+     <sequence>
+      <element name="feeCalculationReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="logininRequest">
+    <wsdl:part name="parameters" element="impl:loginin">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logininResponse">
+    <wsdl:part name="parameters" element="impl:logininResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="feeCalculationResponse">
+    <wsdl:part name="parameters" element="impl:feeCalculationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="feeCalculationRequest">
+    <wsdl:part name="parameters" element="impl:feeCalculation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AirBaggageBillingSystem">
+<wsdl:documentation>
+			{&quot;userAttribute&quot;:&quot;&quot;, &quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;loginin&quot;,&quot;preCT&quot;:&quot;loginin.logininResponse/logininReturn == true&quot;}
+		</wsdl:documentation>
+    <wsdl:operation name="loginin">
+<wsdl:documentation>
+			{&quot;userAttribute&quot;:&quot;&quot;, &quot;ipRegion&quot;:&quot;&quot;,&quot;invokeOp&quot;:&quot;&quot;,&quot;preOp&quot;:&quot;&quot;,&quot;preCT&quot;:&quot;&quot;}
+		</wsdl:documentation>
+      <wsdl:input name="logininRequest" message="impl:logininRequest">
+    </wsdl:input>
+      <wsdl:output name="logininResponse" message="impl:logininResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="feeCalculation">
+      <wsdl:input name="feeCalculationRequest" message="impl:feeCalculationRequest">
+    </wsdl:input>
+      <wsdl:output name="feeCalculationResponse" message="impl:feeCalculationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AirBaggageBillingSystemSoapBinding" type="impl:AirBaggageBillingSystem">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="loginin">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="logininRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logininResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="feeCalculation">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="feeCalculationRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="feeCalculationResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AirBaggageBillingSystem">
+<wsdl:documentation>{&quot;sTime&quot;:&quot;2017-03-01&quot;, &quot;eTime&quot;:&quot;2017-06-01&quot;}</wsdl:documentation>
+    <wsdl:port name="AirBaggageBillingSystem" binding="impl:AirBaggageBillingSystemSoapBinding">
+      <wsdlsoap:address location="http://localhost:8080/ABBS_WSDL/services/AirBaggageBillingSystem"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
